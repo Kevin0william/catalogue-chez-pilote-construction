@@ -5,85 +5,85 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'carreaux-20x20',
             name: 'FGP 22003C',
             description: 'Carreau 20x20 FGP 22003C',
-            image: 'FGP_22003.jpg',
+            image: 'FGP_22003.jpeg',
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22005C',
             description: 'Carreau 20x20 FGP 22005C',
-            image: 'FGP_22005.JPEG'
+            image: 'FGP_22005.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22006C',
             description: 'Carreau 20x20 FGP 22006C',
-            image: 'FGP_22006.JPEG'
+            image: 'FGP_22006.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22007C',
             description: 'Carreau 20x20 FGP 22007C',
-            image: 'FGP_22007.JPEG'
+            image: 'FGP_22007.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22008',
             description: 'Carreau 20x20 FGP 22008',
-            image: 'FGP_22008.JPEG'
+            image: 'FGP_22008.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22009',
             description: 'Carreau 20x20 FGP 22009',
-            image: 'FGP_22009.JPEG'
+            image: 'FGP_22009.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22011C',
             description: 'Carreau 20x20 FGP 22011C',
-            image: 'FGP_22011.JPEG'
+            image: 'FGP_22011.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22012',
             description: 'Carreau 20x20 FGP 22012',
-            image: 'FGP_22012.JPEG'
+            image: 'FGP_22012.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22013C',
             description: 'Carreau 20x20 FGP 22013C',
-            image: 'FGP_22013.JPEG'
+            image: 'FGP_22013.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22014',
             description: 'Carreau 20x20 FGP 22014',
-            image: 'FGP_22014.JPEG'
+            image: 'FGP_22014.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22015C',
             description: 'Carreau 20x20 FGP 22015C',
-            image: 'FGP_22015.JPEG'
+            image: 'FGP_22015.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22016C',
             description: 'Carreau 20x20 FGP 22016C',
-            image: 'FGP_22016.JPEG'
+            image: 'FGP_22016.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'FGP 22017',
             description: 'Carreau 20x20 FGP 22017',
-            image: 'FGP_22017.JPEG'
+            image: 'FGP_22017.jpeg'
         },
         {
             category: 'carreaux-20x20',
             name: 'YM 22024',
             description: 'Carreau 20x20 YM 22024',
-            image: 'YM_22024.JPEG'
+            image: 'YM_22024.jpeg'
         },
 
         ////////////////////////////////////
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'tole',
             name: 'Tôle ondulé',
             description: 'Tôle ondulé aluminium nature disponible en socatrale et importer',
-            image: 'Tole_ondulee.JPEG'
+            image: 'Tole_ondulee.jpeg'
         },
         {
             category: 'tole',
