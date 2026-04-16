@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'carreaux-20x20',
             name: 'FGP 22003C',
             description: 'Carreau 20x20 FGP 22003C',
-            image: 'FGP_22003.JPG',
+            image: 'FGP_22003.jpg',
         },
         {
             category: 'carreaux-20x20',
