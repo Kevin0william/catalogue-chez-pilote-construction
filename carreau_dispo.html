@@ -380,7 +380,7 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.4s;
         }
         
@@ -735,9 +735,9 @@
   ============================================================ -->
     <script>
         /* ============================================================
-                               DATA
-                               Set disponible: false to hide a product.
-                            ============================================================ */
+                                                       DATA
+                                                       Set disponible: false to hide a product.
+                                                    ============================================================ */
         const products = [
             /* ── carreaux-20x20 ── */
             {
@@ -817,98 +817,116 @@
             {
                 id: "PMCP 23001C",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23001.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23004C",
+                category: "carreaux-20x30",
+                image: "PMCP_23004.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23006C",
+                category: "carreaux-20x30",
+                image: "PMCP_23006.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 23014",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23014.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 23015C",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 23016C",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
+            },
+            //  {
+            //     id: "PMCP 23015C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23016C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
                 id: "PMCP 23017",
                 category: "carreaux-20x30",
-                image: "",
-                disponible: false
+                image: "PMCP_23017.jpeg",
+                disponible: true
             }, // hidden
             {
                 id: "PMCP 23018",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23018.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 23022",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23022.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 23023",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 23033",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
+            },
+            // {
+            //     id: "PMCP 23023",
+            //     category: "carreaux-20x30",
+            //     image: "PMCP_23023.jpeg",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23033",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
                 id: "PMCP 23034",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23034.jpeg",
                 disponible: true
             }, {
-                id: "PMCP 23037",
+                id: "PMCP 23036",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23036.jpeg",
                 disponible: true
             }, {
-                id: "PMCP 23038",
+                id: "PMCP 23039",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23039.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 23040",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
+            },
+            // {
+            //     id: "PMCP 23040",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
                 id: "PMCP 23041C",
                 category: "carreaux-20x30",
                 image: "",
                 disponible: true
-            }, {
-                id: "PMCP 23065",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 23074",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 23515C",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 23618",
-                category: "carreaux-20x30",
-                image: "",
-                disponible: true
-            }, {
+            },
+            // {
+            //     id: "PMCP 23065",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23074",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23515C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23618",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
                 id: "PMCP 239833C",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_239833.jpeg",
                 disponible: true
             },
 

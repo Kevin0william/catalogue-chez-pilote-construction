@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'FGP 22008',
             description: 'Carreau 20x20 FGP 22008',
             image: 'FGP_22008.jpeg'
+
         },
         {
             category: 'carreaux-20x20',
@@ -91,115 +92,127 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'carreaux-20x30',
             name: 'PMCP 23001C',
             description: 'Carreau 20x30 PMCP 23001C',
-            image: ''
+            image: 'PMCP_23001.jpeg'
+        },
+        {
+            category: 'carreaux-20x30',
+            name: 'PMCP 23004C',
+            description: 'Carreau 20x30 PMCP 23004C',
+            image: 'PMCP_23004.jpeg'
+        },
+        {
+            category: 'carreaux-20x30',
+            name: 'PMCP 23006C',
+            description: 'Carreau 20x30 PMCP 23006C',
+            image: 'PMCP_23006.jpeg'
         },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23014',
             description: 'Carreau 20x30 PMCP 23014',
-            image: ''
+            image: 'PMCP_23014.jpeg'
         },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23015C',
-            description: 'Carreau 20x30 PMCP 23015C',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23016C',
-            description: 'Carreau 20x30 PMCP 23016C',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23015C',
+        //     description: 'Carreau 20x30 PMCP 23015C',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23016C',
+        //     description: 'Carreau 20x30 PMCP 23016C',
+        //     image: ''
+        // },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23017',
             description: 'Carreau 20x30 PMCP 23017',
-            image: ''
+            image: 'PMCP_23017.jpeg'
         },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23018',
             description: 'Carreau 20x30 PMCP 23018',
-            image: ''
+            image: 'PMCP_23018.jpeg'
         },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23022',
             description: 'Carreau 20x30 PMCP 23022',
-            image: ''
+            image: 'PMCP_23022.jpeg'
         },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23023',
-            description: 'Carreau 20x30 PMCP 23023',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23033',
-            description: 'Carreau 20x30 PMCP 23033',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23023',
+        //     description: 'Carreau 20x30 PMCP 23023',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23033',
+        //     description: 'Carreau 20x30 PMCP 23033',
+        //     image: ''
+        // },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23034',
             description: 'Carreau 20x30 PMCP 23034',
-            image: ''
+            image: 'PMCP_23034.jpeg'
         },
         {
             category: 'carreaux-20x30',
-            name: 'PMCP 23037',
-            description: 'Carreau 20x30 PMCP 23037',
-            image: ''
+            name: 'PMCP 23036',
+            description: 'Carreau 20x30 PMCP 23036',
+            image: 'PMCP_23036.jpeg'
         },
         {
             category: 'carreaux-20x30',
-            name: 'PMCP 23038',
-            description: 'Carreau 20x30 PMCP 23038',
-            image: ''
+            name: 'PMCP 23039',
+            description: 'Carreau 20x30 PMCP 23039',
+            image: 'PMCP_23039.jpeg'
         },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23040',
-            description: 'Carreau 20x30 PMCP 23040',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23040',
+        //     description: 'Carreau 20x30 PMCP 23040',
+        //     image: ''
+        // },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 23041C',
             description: 'Carreau 20x30 PMCP 23041C',
-            image: ''
+            image: 'PMCP_23041.jpeg'
         },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23065',
-            description: 'Carreau 20x30 PMCP 23065',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23074',
-            description: 'Carreau 20x30 PMCP 23074',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23515C',
-            description: 'Carreau 20x30 PMCP 23515C',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x30',
-            name: 'PMCP 23618',
-            description: 'Carreau 20x30 PMCP 23618',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23065',
+        //     description: 'Carreau 20x30 PMCP 23065',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23074',
+        //     description: 'Carreau 20x30 PMCP 23074',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23515C',
+        //     description: 'Carreau 20x30 PMCP 23515C',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x30',
+        //     name: 'PMCP 23618',
+        //     description: 'Carreau 20x30 PMCP 23618',
+        //     image: ''
+        // },
         {
             category: 'carreaux-20x30',
             name: 'PMCP 239833C',
             description: 'Carreau 20x30 PMCP 239833C',
-            image: ''
+            image: 'PMCP_239833.jpeg'
         },
         // Carreaux 20x40
         {
