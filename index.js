@@ -554,53 +554,254 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Carreaux 30x30
         /* ==================== CARREAUX 30x30 FGP ==================== */
-        { category: 'carreaux-30x30', name: 'FGP 33001', description: 'Carreau 30x30 FGP 33001', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33007C', description: 'Carreau 30x30 FGP 33007C', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33008C', description: 'Carreau 30x30 FGP 33008C', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33010', description: 'Carreau 30x30 FGP 33010', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33014', description: 'Carreau 30x30 FGP 33014', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33015', description: 'Carreau 30x30 FGP 33015', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33021', description: 'Carreau 30x30 FGP 33021', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33022', description: 'Carreau 30x30 FGP 33022', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33023', description: 'Carreau 30x30 FGP 33023', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33024', description: 'Carreau 30x30 FGP 33024', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33025', description: 'Carreau 30x30 FGP 33025', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33026', description: 'Carreau 30x30 FGP 33026', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33027', description: 'Carreau 30x30 FGP 33027', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33028', description: 'Carreau 30x30 FGP 33028', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33029', description: 'Carreau 30x30 FGP 33029', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33030', description: 'Carreau 30x30 FGP 33030', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33032', description: 'Carreau 30x30 FGP 33032', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33034', description: 'Carreau 30x30 FGP 33034', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33035', description: 'Carreau 30x30 FGP 33035', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33036', description: 'Carreau 30x30 FGP 33036', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33039', description: 'Carreau 30x30 FGP 33039', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33112', description: 'Carreau 30x30 FGP 33112', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33126', description: 'Carreau 30x30 FGP 33126', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33130', description: 'Carreau 30x30 FGP 33130', image: '' },
-        { category: 'carreaux-30x30', name: 'FGP 33132', description: 'Carreau 30x30 FGP 33132', image: '' },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33005',
+            description: 'Carreau 30x30 FGP 33005',
+            image: 'FGP33005.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33010',
+            description: 'Carreau 30x30 FGP 33010',
+            image: 'FGP33010.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33015',
+            description: 'Carreau 30x30 FGP 33015',
+            image: 'FGP33015.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33020',
+            description: 'Carreau 30x30 FGP 33020',
+            image: 'FGP33020.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33021',
+            description: 'Carreau 30x30 FGP 33021',
+            image: 'FGP33021.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33022',
+            description: 'Carreau 30x30 FGP 33022',
+            image: 'FGP33022.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33023',
+            description: 'Carreau 30x30 FGP 33023',
+            image: 'FGP33023.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33024',
+            description: 'Carreau 30x30 FGP 33024',
+            image: 'FGP33024.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33025',
+            description: 'Carreau 30x30 FGP 33025',
+            image: 'FGP33025.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33026',
+            description: 'Carreau 30x30 FGP 33026',
+            image: 'FGP33026.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33027',
+            description: 'Carreau 30x30 FGP 33027',
+            image: 'FGP33027.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33028',
+            description: 'Carreau 30x30 FGP 33028',
+            image: 'FGP33028.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33029',
+            description: 'Carreau 30x30 FGP 33029',
+            image: 'FGP33029.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33032',
+            description: 'Carreau 30x30 FGP 33032',
+            image: 'FGP33032.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33034',
+            description: 'Carreau 30x30 FGP 33034',
+            image: 'FGP33034.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33035',
+            description: 'Carreau 30x30 FGP 33035',
+            image: 'FGP33035.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33036',
+            description: 'Carreau 30x30 FGP 33036',
+            image: 'FGP33036.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33038',
+            description: 'Carreau 30x30 FGP 33038',
+            image: 'FGP33038.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33039',
+            description: 'Carreau 30x30 FGP 33039',
+            image: 'FGP33039.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33112',
+            description: 'Carreau 30x30 FGP 33112',
+            image: 'FGP33112.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33126',
+            description: 'Carreau 30x30 FGP 33126',
+            image: 'FGP33126.jpg'
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'FGP 33130',
+            description: 'Carreau 30x30 FGP 33130',
+            image: 'FGP33130.jpg'
+        },
         /* ==================== CARREAUX 30x30 NM ==================== */
-        { category: 'carreaux-30x30', name: 'NM 33001C', description: 'Carreau 30x30 NM 33001C', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33003C', description: 'Carreau 30x30 NM 33003C', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33005', description: 'Carreau 30x30 NM 33005', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33021', description: 'Carreau 30x30 NM 33021', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33041C', description: 'Carreau 30x30 NM 33041C', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33091C', description: 'Carreau 30x30 NM 33091C', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33101C', description: 'Carreau 30x30 NM 33101C', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33171', description: 'Carreau 30x30 NM 33171', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33225', description: 'Carreau 30x30 NM 33225', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33233', description: 'Carreau 30x30 NM 33281', image: '' },
-        { category: 'carreaux-30x30', name: 'NM 33281', description: 'Carreau 30x30 NM 33281', image: '' },
-        { category: 'carreaux-30x30', name: 'NMC 33005', description: 'Carreau 30x30 NMC 33005', image: '' },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33001',
+            description: 'Carreau 30x30 NM 33001',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33003',
+            description: 'Carreau 30x30 NM 33003',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33005',
+            description: 'Carreau 30x30 NM 33005',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33021',
+            description: 'Carreau 30x30 NM 33021',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33041',
+            description: 'Carreau 30x30 NM 33041',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33091',
+            description: 'Carreau 30x30 NM 33091',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33101',
+            description: 'Carreau 30x30 NM 33101',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33171',
+            description: 'Carreau 30x30 NM 33171',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33225',
+            description: 'Carreau 30x30 NM 33225',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33233',
+            description: 'Carreau 30x30 NM 33281',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NM 33281',
+            description: 'Carreau 30x30 NM 33281',
+            image: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NMC 33005',
+            description: 'Carreau 30x30 NMC 33005',
+
+            mage: ''
+        },
         /* ==================== CARREAUX 30x30 NMC ==================== */
-        { category: 'carreaux-30x30', name: 'NMC 33095', description: 'Carreau 30x30 NMC 33095', image: '' },
-        { category: 'carreaux-30x30', name: 'NMC 33105', description: 'Carreau 30x30 NMC 33105', image: '' },
-        { category: 'carreaux-30x30', name: 'NMC 33225', description: 'Carreau 30x30 NMC 33225', image: '' },
+        {
+            category: 'carreaux-30x30',
+            name: 'NMC 33095',
+            description: 'Carreau 30x30 NMC 33095',
+
+            mage: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NMC 33105',
+            description: 'Carreau 30x30 NMC 33105',
+
+            mage: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'NMC 33225',
+            description: 'Carreau 30x30 NMC 33225',
+
+            mage: ''
+        },
 
         /* ==================== CARREAUX 30x30 YM ==================== */
-        { category: 'carreaux-30x30', name: 'YM 33031', description: 'Carreau 30x30 YM 33031', image: '' },
-        { category: 'carreaux-30x30', name: 'YM 33064', description: 'Carreau 30x30 YM 33064', image: '' },
-        { category: 'carreaux-30x30', name: 'YM 33191', description: 'Carreau 30x30 YM 33191', image: '' },
+        {
+            category: 'carreaux-30x30',
+            name: 'YM 33031',
+            description: 'Carreau 30x30 YM 33031',
+            mage: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'YM 33064',
+            description: 'Carreau 30x30 YM 33064',
+            mage: ''
+        },
+        {
+            category: 'carreaux-30x30',
+            name: 'YM 33191',
+            description: 'Carreau 30x30 YM 33191',
+            mage: ''
+        },
 
 
 
@@ -871,3 +1072,813 @@ document.querySelectorAll('.contact').forEach(function(contact) {
         window.open(url, '_blank');
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const products = [
+    /* ── carreaux-20x20 ── */
+    {
+        id: "FGP 22003C",
+        category: "carreaux-20x20",
+        image: "FGP_22003.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22005C",
+        category: "carreaux-20x20",
+        image: "FGP_22005.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22006C",
+        category: "carreaux-20x20",
+        image: "FGP_22006.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22007C",
+        category: "carreaux-20x20",
+        image: "FGP_22007.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22008",
+        category: "carreaux-20x20",
+        image: "FGP_22008.jpeg",
+        disponible: false
+    }, // hidden
+    {
+        id: "FGP 22009",
+        category: "carreaux-20x20",
+        image: "FGP_22009.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22011C",
+        category: "carreaux-20x20",
+        image: "FGP_22011.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22012",
+        category: "carreaux-20x20",
+        image: "FGP_22012.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22013C",
+        category: "carreaux-20x20",
+        image: "FGP_22013.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22014",
+        category: "carreaux-20x20",
+        image: "FGP_22014.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22015C",
+        category: "carreaux-20x20",
+        image: "FGP_22015.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22016C",
+        category: "carreaux-20x20",
+        image: "FGP_22016.jpeg",
+        disponible: true
+    }, {
+        id: "FGP 22017",
+        category: "carreaux-20x20",
+        image: "FGP_22017.jpeg",
+        disponible: true
+    }, {
+        id: "YM 22024",
+        category: "carreaux-20x20",
+        image: "YM_22024.jpeg",
+        disponible: true
+    },
+
+    /* ── carreaux-20x30 ── */
+    {
+        id: "PMCP 23001C",
+        category: "carreaux-20x30",
+        image: "PMCP_23001.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23004C",
+        category: "carreaux-20x30",
+        image: "PMCP_23004.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23006C",
+        category: "carreaux-20x30",
+        image: "PMCP_23006.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23014",
+        category: "carreaux-20x30",
+        image: "PMCP_23014.jpeg",
+        disponible: true
+    },
+    //  {
+    //     id: "PMCP 23015C",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, {
+    //     id: "PMCP 23016C",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, 
+    {
+        id: "PMCP 23017",
+        category: "carreaux-20x30",
+        image: "PMCP_23017.jpeg",
+        disponible: false
+    }, // hidden
+    {
+        id: "PMCP 23018",
+        category: "carreaux-20x30",
+        image: "PMCP_23018.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23022",
+        category: "carreaux-20x30",
+        image: "PMCP_23022.jpeg",
+        disponible: true
+    },
+    // {
+    //     id: "PMCP 23023",
+    //     category: "carreaux-20x30",
+    //     image: "PMCP_23023.jpeg",
+    //     disponible: true
+    // }, {
+    //     id: "PMCP 23033",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, 
+    {
+        id: "PMCP 23034",
+        category: "carreaux-20x30",
+        image: "PMCP_23034.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23036",
+        category: "carreaux-20x30",
+        image: "PMCP_23036.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 23039",
+        category: "carreaux-20x30",
+        image: "PMCP_23039.jpeg",
+        disponible: true
+    },
+    // {
+    //     id: "PMCP 23040",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, 
+    {
+        id: "PMCP 23041C",
+        category: "carreaux-20x30",
+        image: "PMCP_23041.jpeg",
+        disponible: true
+    },
+    // {
+    //     id: "PMCP 23065",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, {
+    //     id: "PMCP 23074",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, {
+    //     id: "PMCP 23515C",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, {
+    //     id: "PMCP 23618",
+    //     category: "carreaux-20x30",
+    //     image: "",
+    //     disponible: true
+    // }, 
+    {
+        id: "PMCP 239833C",
+        category: "carreaux-20x30",
+        image: "PMCP_239833.jpeg",
+        disponible: true
+    },
+
+    /* ── carreaux-20x40 ── */
+    {
+        id: "23302",
+        category: "carreaux-20x40",
+        image: "23302.jpeg",
+        disponible: true
+    }, {
+        id: "2D9901",
+        category: "carreaux-20x40",
+        image: "2D9901.jpeg",
+        disponible: true
+    }, {
+        id: "P22132",
+        category: "carreaux-20x40",
+        image: "P22132.jpeg",
+        disponible: true
+    },
+    // {
+    //     id: "W24017",
+    //     category: "carreaux-20x40",
+    //     image: "",
+    //     disponible: true
+    // }, {
+    //     id: "W24022",
+    //     category: "carreaux-20x40",
+    //     image: "",
+    //     disponible: true
+    // }, 
+    {
+        id: "W24032C",
+        category: "carreaux-20x40",
+        image: "W24032.jpeg",
+        disponible: true
+    }, {
+        id: "W24048",
+        category: "carreaux-20x40",
+        image: "W24048.jpeg",
+        disponible: true
+    },
+    // {
+    //     id: "W24056",
+    //     category: "carreaux-20x40",
+    //     image: "",
+    //     disponible: true
+    // },
+
+    /* ── carreaux-25x40 ── */
+
+    {
+        id: "PMCP 4117C",
+        category: "carreaux-25x40",
+        image: "PMCP_4117.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42001C",
+        category: "carreaux-25x40",
+        image: "PMCP_42001.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42003",
+        category: "carreaux-25x40",
+        image: "PMCP_42003.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42005",
+        category: "carreaux-25x40",
+        image: "PMCP_42005.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42006",
+        category: "carreaux-25x40",
+        image: "PMCP_42006.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42012C",
+        category: "carreaux-25x40",
+        image: "PMCP_42012.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42018",
+        category: "carreaux-25x40",
+        image: "PMCP_42018.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42019C",
+        category: "carreaux-25x40",
+        image: "PMCP_42019.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42022C",
+        category: "carreaux-25x40",
+        image: "PMCP_42022.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42023C",
+        category: "carreaux-25x40",
+        image: "PMCP_42023.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42026",
+        category: "carreaux-25x40",
+        image: "PMCP_42026.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42027C",
+        category: "carreaux-25x40",
+        image: "PMCP_42027.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42029C",
+        category: "carreaux-25x40",
+        image: "PMCP_42029.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42032",
+        category: "carreaux-25x40",
+        image: "PMCP_42032.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42035C",
+        category: "carreaux-25x40",
+        image: "PMCP_42035.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42037C",
+        category: "carreaux-25x40",
+        image: "PMCP_42037.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42041C",
+        category: "carreaux-25x40",
+        image: "PMCP_42041.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42042C",
+        category: "carreaux-25x40",
+        image: "PMCP_42042.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42043C",
+        category: "carreaux-25x40",
+        image: "PMCP_42043.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42044",
+        category: "carreaux-25x40",
+        image: "PMCP_42044.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42047C",
+        category: "carreaux-25x40",
+        image: "PMCP_42047.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42049",
+        category: "carreaux-25x40",
+        image: "PMCP_42049.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42053C",
+        category: "carreaux-25x40",
+        image: "PMCP_42053.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42054C",
+        category: "carreaux-25x40",
+        image: "PMCP_42054.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42055C",
+        category: "carreaux-25x40",
+        image: "PMCP_42055.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42059",
+        category: "carreaux-25x40",
+        image: "PMCP_42059.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42060",
+        category: "carreaux-25x40",
+        image: "PMCP_42060.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42064",
+        category: "carreaux-25x40",
+        image: "PMCP_42064.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42065",
+        category: "carreaux-25x40",
+        image: "PMCP_42065.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42067",
+        category: "carreaux-25x40",
+        image: "PMCP_42067.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42069",
+        category: "carreaux-25x40",
+        image: "PMCP_42069.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42070",
+        category: "carreaux-25x40",
+        image: "PMCP_42070.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 42072",
+        category: "carreaux-25x40",
+        image: "PMCP_42072.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42073",
+        category: "carreaux-25x40",
+        image: "PMCP_42073.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42074",
+        category: "carreaux-25x40",
+        image: "PMCP_42074.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42075",
+        category: "carreaux-25x40",
+        image: "PMCP_42075.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42076",
+        category: "carreaux-25x40",
+        image: "PMCP_42076.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42078",
+        category: "carreaux-25x40",
+        image: "PMCP_42078.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42079",
+        category: "carreaux-25x40",
+        image: "PMCP_42079.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42080",
+        category: "carreaux-25x40",
+        image: "PMCP_42080.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42081",
+        category: "carreaux-25x40",
+        image: "PMCP_42081.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42082",
+        category: "carreaux-25x40",
+        image: "PMCP_42082.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 42083",
+        category: "carreaux-25x40",
+        image: "PMCP_42083.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 4229G",
+        category: "carreaux-25x40",
+        image: "PMCP_4229.jpeg",
+        disponible: true
+    }, {
+        id: "PMCP 4583C",
+        category: "carreaux-25x40",
+        image: "PMCP_4583.jpeg",
+        disponible: true
+    },
+
+    {
+        id: "PMCP 4639",
+        category: "carreaux-25x40",
+        image: "PMCP_4639.jpeg",
+        disponible: true
+    },
+
+    /* ── carreaux-30x30 ── */
+    {
+        id: "FGP 33001",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33007C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33008C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33010",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: false
+    }, // hidden
+    {
+        id: "FGP 33014",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33015",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33021",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33022",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33023",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33024",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33025",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33026",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33027",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33028",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33029",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33030",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33032",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33034",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33035",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33036",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33039",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33112",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33126",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33130",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "FGP 33132",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33001C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33003C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33005",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33021",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33041C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33091C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33101C",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33171",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33225",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33233",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NM 33281",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NMC 33005",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NMC 33095",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NMC 33105",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "NMC 33225",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "YM 33031",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "YM 33064",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    }, {
+        id: "YM 33191",
+        category: "carreaux-30x30",
+        image: "",
+        disponible: true
+    },
+
+    /* ── carreaux-30x60 ── */
+    {
+        id: "Carreau Grand 30x60",
+        category: "carreaux-30x60",
+        image: "",
+        disponible: true
+    },
+
+    /* ── carreaux-40x40 ── */
+    {
+        id: "Carreau 40x40",
+        category: "carreaux-40x40",
+        image: "",
+        disponible: true
+    },
+
+    /* ── carreaux-50x50 ── */
+    {
+        id: "Carreau 50x50",
+        category: "carreaux-50x50",
+        image: "",
+        disponible: true
+    },
+
+    /* ── carreaux-60x60 ── */
+    {
+        id: "Carreau 60x60",
+        category: "carreaux-60x60",
+        image: "",
+        disponible: true
+    },
+
+    /* ── carreaux-60x120 ── */
+    {
+        id: "Carreau Rectangulaire 60x120",
+        category: "carreaux-60x120",
+        image: "",
+        disponible: true
+    },
+
+    /* ── tole ── */
+    {
+        id: "Tôle ondulé",
+        category: "tole",
+        image: "Tole_ondulee.JPG",
+        disponible: true
+    }, {
+        id: "Tôle Acier",
+        category: "tole",
+        image: "",
+        disponible: false
+    }, // hidden
+
+    /* ── accessoire ── */
+    {
+        id: "Joint Silicone",
+        category: "accessoire",
+        image: "",
+        disponible: true
+    }, {
+        id: "Croix Espacement",
+        category: "accessoire",
+        image: "",
+        disponible: true
+    },
+
+    /* ── ciment-colle ── */
+    {
+        id: "Ciment Colle Blanc",
+        category: "ciment-colle",
+        image: "",
+        disponible: true
+    }, {
+        id: "Colle Époxy",
+        category: "ciment-colle",
+        image: "",
+        disponible: false
+    } // hidden
+];

@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Disponible – Pilote Construction SARL</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+         :root {
+            --gold: #E6A817;
+            --gold-light: #F5C842;
+            --gold-dark: #C48A0A;
+            --dark: #1A1F2E;
+            --dark-2: #242938;
+            --dark-3: #2E3447;
+            --text: #1A1F2E;
+            --text-muted: #6B7280;
+            --text-light: #9CA3AF;
+            --surface: #FFFFFF;
+            --surface-2: #F8F9FA;
+            --surface-3: #F1F3F5;
+            --border: #E5E7EB;
+            --green: #10B981;
+            --green-light: #D1FAE5;
+            --red: #EF4444;
+            --red-light: #FEE2E2;
+            --radius-sm: 8px;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .06), 0 1px 2px rgba(0, 0, 0, .04);
+            --shadow: 0 4px 16px rgba(0, 0, 0, .08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, .12);
+            --shadow-gold: 0 8px 24px rgba(230, 168, 23, .22);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--surface-2);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* ── ANIMATIONS ── */
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(.94);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -400px 0;
+            }
+            100% {
+                background-position: 400px 0;
+            }
+        }
+        
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.4);
+                opacity: .7;
+            }
+        }
+        /* ── HEADER ── */
+        
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 300;
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            backdrop-filter: blur(12px);
+        }
+        
+        .header-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .brand-logo svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--dark);
+        }
+        
+        .brand-text .brand-name {
+            font-size: .95rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+        
+        .brand-text .brand-sub {
+            font-size: .7rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, .15);
+            border: 1px solid rgba(16, 185, 129, .25);
+            color: var(--green);
+            font-size: .72rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 50px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+        
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse-dot 1.8s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        
+        .stock-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--dark-2);
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+        }
+        
+        .stock-pill strong {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            border-radius: 50px;
+            padding: 1px 8px;
+            font-size: .82rem;
+        }
+        /* ── NAV CATÉGORIES ── */
+        
+        .cat-nav {
+            position: sticky;
+            top: 68px;
+            z-index: 200;
+            background: var(--dark-2);
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .cat-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .cat-nav-inner {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 10px 20px;
+            width: max-content;
+            min-width: 100%;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 16px;
+            border-radius: 50px;
+            font-size: .75rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .55);
+            background: transparent;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all .2s;
+            letter-spacing: .02em;
+        }
+        
+        .nav-btn:hover {
+            color: rgba(255, 255, 255, .9);
+            background: rgba(255, 255, 255, .06);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            border-color: transparent;
+            box-shadow: 0 2px 10px rgba(230, 168, 23, .35);
+        }
+        
+        .nav-btn .nav-count {
+            background: rgba(0, 0, 0, .15);
+            border-radius: 50px;
+            padding: 0 6px;
+            font-size: .68rem;
+            line-height: 1.6;
+            min-width: 18px;
+            text-align: center;
+        }
+        
+        .nav-btn.active .nav-count {
+            background: rgba(0, 0, 0, .2);
+        }
+        /* ── MAIN ── */
+        
+        .main {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        /* ── HERO INTRO ── */
+        
+        .page-hero {
+            text-align: center;
+            margin-bottom: 52px;
+            animation: fadeUp .6s ease both;
+        }
+        
+        .page-hero .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(230, 168, 23, .1);
+            border: 1px solid rgba(230, 168, 23, .25);
+            color: var(--gold-dark);
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -.02em;
+            margin-bottom: 10px;
+            line-height: 1.15;
+        }
+        
+        .page-hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-hero p {
+            font-size: .95rem;
+            color: var(--text-muted);
+            max-width: 460px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        /* ── CATEGORY SECTION ── */
+        
+        .cat-section {
+            margin-bottom: 60px;
+            animation: fadeUp .55s ease both;
+        }
+        
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .cat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .cat-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--dark);
+        }
+        
+        .cat-label {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -.01em;
+        }
+        
+        .cat-count {
+            font-size: .72rem;
+            font-weight: 700;
+            background: var(--surface-3);
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+        }
+        
+        .cat-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        /* ── GRID ── */
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 18px;
+        }
+        /* ── CARD ── */
+        
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform .25s, box-shadow .25s, border-color .25s;
+            animation: scaleIn .45s ease both;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(230, 168, 23, .3);
+        }
+        /* Image */
+        
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 72%;
+            overflow: hidden;
+            background: var(--surface-3);
+        }
+        
+        .card-img-wrap img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform .4s;
+        }
+        
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.06);
+        }
+        /* Placeholder */
+        
+        .card-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #F1F3F5, #E8EAED);
+        }
+        
+        .card-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .5), transparent);
+            background-size: 400px 100%;
+            animation: shimmer 2s infinite linear;
+            pointer-events: none;
+        }
+        
+        .placeholder-tile {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            background: var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            padding: 6px;
+        }
+        
+        .placeholder-tile span {
+            border-radius: 2px;
+            background: #D1D5DB;
+        }
+        
+        .placeholder-id {
+            font-size: .7rem;
+            font-weight: 800;
+            color: #9CA3AF;
+            letter-spacing: .06em;
+            text-align: center;
+            padding: 0 8px;
+        }
+        /* Badges */
+        
+        .badge-stock {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 5;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .05em;
+            padding: 4px 10px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+        
+        .badge-stock.in-stock {
+            background: var(--green-light);
+            color: #059669;
+            border: 1px solid rgba(16, 185, 129, .2);
+        }
+        
+        .badge-stock .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+        /* Download overlay */
+        
+        .card-download-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+            opacity: 0;
+            transform: scale(.85);
+            transition: opacity .2s, transform .2s;
+        }
+        
+        .product-card:hover .card-download-overlay {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .btn-download-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(6px);
+            border: 1.5px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s;
+        }
+        
+        .btn-download-img:hover {
+            background: var(--gold-dark);
+        }
+        
+        .btn-download-img svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        /* Body */
+        
+        .card-body {
+            padding: 14px 14px 8px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .card-id {
+            font-size: .88rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.25;
+            letter-spacing: -.01em;
+        }
+        
+        .card-cat {
+            font-size: .7rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: .02em;
+        }
+        /* Stock info row */
+        
+        .card-stock-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+            padding: 7px 10px;
+            background: var(--green-light);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(16, 185, 129, .15);
+        }
+        
+        .card-stock-row svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+        
+        .card-stock-row span {
+            font-size: .7rem;
+            font-weight: 700;
+            color: #059669;
+        }
+        /* Actions */
+        
+        .card-actions {
+            padding: 0 12px 14px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn-wa {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #25D366;
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: 9px 12px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .15s, background .15s;
+            letter-spacing: .02em;
+        }
+        
+        .btn-wa:hover {
+            background: #1DB954;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, .35);
+        }
+        
+        .btn-wa svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        
+        .btn-dl {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all .15s;
+            flex-shrink: 0;
+        }
+        
+        .btn-dl:hover {
+            background: var(--dark);
+            color: #fff;
+            border-color: var(--dark);
+        }
+        
+        .btn-dl svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        /* Empty */
+        
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            animation: fadeUp .5s ease both;
+        }
+        
+        .empty-icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: var(--radius);
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .empty-icon-wrap svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--text-light);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        
+        .empty-state h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .empty-state p {
+            color: var(--text-muted);
+            font-size: .9rem;
+        }
+        /* ── FOOTER ── */
+        
+        .site-footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, .7);
+            padding: 44px 24px 28px;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+        }
+        
+        .footer-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 28px;
+        }
+        
+        .footer-brand {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-brand .f-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-brand .f-logo-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-brand .f-logo-icon svg {
+            width: 17px;
+            height: 17px;
+            fill: var(--dark);
+        }
+        
+        .footer-brand .f-logo-name {
+            font-size: .9rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        
+        .footer-brand p {
+            font-size: .82rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .45);
+            max-width: 280px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 160px;
+        }
+        
+        .footer-col h4 {
+            font-size: .78rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, .6);
+            font-size: .84rem;
+            text-decoration: none;
+            transition: color .2s;
+            margin-bottom: 8px;
+        }
+        
+        .footer-link:hover {
+            color: #fff;
+        }
+        
+        .footer-link svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .footer-bottom p {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .3);
+        }
+        
+        .footer-bottom .f-tag {
+            font-size: .7rem;
+            color: var(--gold);
+            background: rgba(230, 168, 23, .08);
+            border: 1px solid rgba(230, 168, 23, .15);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+        /* ── MODAL ── */
+        
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 900;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .22s;
+        }
+        
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-box {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 440px;
+            max-height: 86vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, .25);
+            transform: translateY(16px) scale(.97);
+            transition: transform .26s;
+        }
+        
+        .modal-backdrop.open .modal-box {
+            transform: translateY(0) scale(1);
+        }
+        
+        .modal-head {
+            padding: 20px 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        
+        .modal-product-thumb {
+            width: 54px;
+            height: 54px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+        
+        .modal-product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .modal-product-thumb .thumb-ph {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 800;
+            color: var(--text-light);
+        }
+        
+        .modal-product-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .modal-label {
+            font-size: .68rem;
+            font-weight: 800;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 2px;
+        }
+        
+        .modal-name {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.25;
+        }
+        
+        .modal-cat {
+            font-size: .75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        
+        .modal-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border);
+            background: var(--surface-3);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+            transition: background .15s;
+        }
+        
+        .modal-close:hover {
+            background: var(--border);
+        }
+        
+        .modal-sep {
+            height: 1px;
+            background: var(--border);
+            margin: 18px 20px 0;
+        }
+        
+        .modal-subtitle {
+            padding: 14px 20px 10px;
+            font-size: .7rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        
+        .contacts-list {
+            overflow-y: auto;
+            padding: 0 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 14px;
+            border-radius: var(--radius);
+            background: var(--surface-3);
+            border: 1.5px solid var(--border);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: all .18s;
+        }
+        
+        .contact-item:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+            transform: translateX(3px);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, .3);
+        }
+        
+        .contact-item.vip {
+            background: #FFF8E6;
+            border-color: rgba(230, 168, 23, .3);
+        }
+        
+        .contact-item.vip:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+        }
+        
+        .contact-av {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .72rem;
+            font-weight: 900;
+            color: var(--dark);
+            flex-shrink: 0;
+            transition: background .18s;
+        }
+        
+        .contact-item:hover .contact-av {
+            background: rgba(255, 255, 255, .25);
+            color: #fff;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .contact-name {
+            font-size: .83rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .contact-role {
+            font-size: .7rem;
+            opacity: .6;
+            margin-top: 1px;
+        }
+        
+        .contact-wa-icon {
+            flex-shrink: 0;
+            opacity: .4;
+            transition: opacity .18s;
+        }
+        
+        .contact-item:hover .contact-wa-icon {
+            opacity: 1;
+        }
+        /* ── RESPONSIVE ── */
+        
+        @media (max-width: 768px) {
+            .header-inner {
+                height: 58px;
+            }
+            .cat-nav {
+                top: 58px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 14px;
+            }
+            .page-hero h1 {
+                font-size: 1.65rem;
+            }
+            .brand-text .brand-sub {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main {
+                padding: 24px 14px 60px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .card-id {
+                font-size: .82rem;
+            }
+            .btn-wa {
+                font-size: .7rem;
+            }
+            .live-badge {
+                display: none;
+            }
+            .page-hero h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── HEADER ── -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-name">Pilote Construction SARL</div>
+                    <div class="brand-sub">Stock Usine</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="live-badge">
+                    <span class="live-dot"></span> Stock en direct
+                </div>
+                <div class="stock-pill">En stock &nbsp;<strong id="total-count">0</strong></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── NAV CATÉGORIES ── -->
+    <nav class="cat-nav" id="cat-nav" aria-label="Catégories">
+        <div class="cat-nav-inner" id="nav-inner"></div>
+    </nav>
+
+    <!-- ── MAIN ── -->
+    <main class="main">
+        <div class="page-hero">
+            <div class="hero-tag">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Disponible maintenant
+            </div>
+            <h1>Carreaux & Matériaux<br /><em>Disponibles au Usine</em></h1>
+            <p>Parcourez notre stock en temps réel, organisé par catégorie et format. Contactez-nous directement depuis chaque produit.</p>
+        </div>
+        <div id="sections-container"></div>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="f-logo">
+                        <div class="f-logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="#1A1F2E" stroke-width="2"/></svg>
+                        </div>
+                        <span class="f-logo-name">Pilote Construction SARL</span>
+                    </div>
+                    <p>Votre partenaire de confiance pour les matériaux de construction de qualité au Cameroun. Stock mis à jour en permanence.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+237670078114" class="footer-link" style="display:flex">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>                        +237 670 078 114
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Horaires</h4>
+                    <p style="font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.45);">
+                        Lun – Sam : 7h30 – 18h30<br /> Dimanche : 8h00 – 13h00
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pilote Construction SARL. Tous droits réservés.</p>
+                <span class="f-tag">Stock Digital</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ── MODAL WHATSAPP ── -->
+    <div class="modal-backdrop" id="wa-modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div class="modal-product-thumb" id="modal-thumb">
+                    <div class="thumb-ph" id="modal-thumb-ph"></div>
+                </div>
+                <div class="modal-product-info">
+                    <div class="modal-label">Demande de renseignement</div>
+                    <div class="modal-name" id="modal-name">—</div>
+                    <div class="modal-cat" id="modal-cat"></div>
+                </div>
+                <button class="modal-close" id="modal-close" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-sep"></div>
+            <div class="modal-subtitle">Choisissez un conseiller</div>
+            <div class="contacts-list">
+
+                <div class="contact-item vip" data-number="237680631763">
+                    <div class="contact-av">DZ</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Mr DJOUA ZIDANE</div>
+                        <div class="contact-role">Président Directeur Général</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item vip" data-number="237673902656">
+                    <div class="contact-av">TD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Mr TCHIOFFO DIBORES</div>
+                        <div class="contact-role">Directeur Général</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237653891677">
+                    <div class="contact-av">DJ</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Mr DJOUA JORES</div>
+                        <div class="contact-role">Chef d'agence 4e étage</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237670078114">
+                    <div class="contact-av">MK</div>
+                    <div class="contact-info">
+                        <div class="contact-name">MATIP KEVIN</div>
+                        <div class="contact-role">Développeur</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237691137367">
+                    <div class="contact-av">TJ</div>
+                    <div class="contact-info">
+                        <div class="contact-name">TOSCANI JUNIOR</div>
+                        <div class="contact-role">Assistant comptable</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237682938890">
+                    <div class="contact-av">FD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">FARELLE DIAMS</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237682938962">
+                    <div class="contact-av">LJ</div>
+                    <div class="contact-info">
+                        <div class="contact-name">LOIC JARDEL</div>
+                        <div class="contact-role">Conseiller de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237686736345">
+                    <div class="contact-av">FO</div>
+                    <div class="contact-info">
+                        <div class="contact-name">FORTUNE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237682938948">
+                    <div class="contact-av">LI</div>
+                    <div class="contact-info">
+                        <div class="contact-name">LINARESSE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237682939429">
+                    <div class="contact-av">MA</div>
+                    <div class="contact-info">
+                        <div class="contact-name">MANUELLA</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237652063393">
+                    <div class="contact-av">DE</div>
+                    <div class="contact-info">
+                        <div class="contact-name">DESIRE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+                <div class="contact-item" data-number="237682939236">
+                    <div class="contact-av">ST</div>
+                    <div class="contact-info">
+                        <div class="contact-name">STONE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ============================================================
+                                                           CONFIG
+                                                        ============================================================ */
+        const BASE_URL = "https://catalogue-chez-pilote-construction.vercel.app/";
+
+        /* ============================================================
+           PRODUITS
+           Champs :
+             id         – référence / nom affiché sur la carte
+             category   – clé de catégorie (voir categoryMeta)
+             image      – nom du fichier (ex: "FGP_22003.jpeg") ou "" si aucune
+             disponible – true = visible | false = masqué
+        ============================================================ */
+        const products = [
+            /* ── carreaux-20x20 ── */
+            {
+                id: "FGP 22003C",
+                category: "carreaux-20x20",
+                image: "FGP_22003.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22005C",
+                category: "carreaux-20x20",
+                image: "FGP_22005.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22006C",
+                category: "carreaux-20x20",
+                image: "FGP_22006.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22007C",
+                category: "carreaux-20x20",
+                image: "FGP_22007.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22008",
+                category: "carreaux-20x20",
+                image: "FGP_22008.jpeg",
+                disponible: false
+            }, // hidden
+            {
+                id: "FGP 22009",
+                category: "carreaux-20x20",
+                image: "FGP_22009.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22011C",
+                category: "carreaux-20x20",
+                image: "FGP_22011.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22012",
+                category: "carreaux-20x20",
+                image: "FGP_22012.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22013C",
+                category: "carreaux-20x20",
+                image: "FGP_22013.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22014",
+                category: "carreaux-20x20",
+                image: "FGP_22014.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22015C",
+                category: "carreaux-20x20",
+                image: "FGP_22015.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22016C",
+                category: "carreaux-20x20",
+                image: "FGP_22016.jpeg",
+                disponible: true
+            }, {
+                id: "FGP 22017",
+                category: "carreaux-20x20",
+                image: "FGP_22017.jpeg",
+                disponible: true
+            }, {
+                id: "YM 22024",
+                category: "carreaux-20x20",
+                image: "YM_22024.jpeg",
+                disponible: true
+            },
+
+            /* ── carreaux-20x30 ── */
+            {
+                id: "PMCP 23001C",
+                category: "carreaux-20x30",
+                image: "PMCP_23001.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23004C",
+                category: "carreaux-20x30",
+                image: "PMCP_23004.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23006C",
+                category: "carreaux-20x30",
+                image: "PMCP_23006.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23014",
+                category: "carreaux-20x30",
+                image: "PMCP_23014.jpeg",
+                disponible: true
+            },
+            //  {
+            //     id: "PMCP 23015C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23016C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
+                id: "PMCP 23017",
+                category: "carreaux-20x30",
+                image: "PMCP_23017.jpeg",
+                disponible: false
+            }, // hidden
+            {
+                id: "PMCP 23018",
+                category: "carreaux-20x30",
+                image: "PMCP_23018.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23022",
+                category: "carreaux-20x30",
+                image: "PMCP_23022.jpeg",
+                disponible: true
+            },
+            // {
+            //     id: "PMCP 23023",
+            //     category: "carreaux-20x30",
+            //     image: "PMCP_23023.jpeg",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23033",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
+                id: "PMCP 23034",
+                category: "carreaux-20x30",
+                image: "PMCP_23034.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23036",
+                category: "carreaux-20x30",
+                image: "PMCP_23036.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 23039",
+                category: "carreaux-20x30",
+                image: "PMCP_23039.jpeg",
+                disponible: true
+            },
+            // {
+            //     id: "PMCP 23040",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
+                id: "PMCP 23041C",
+                category: "carreaux-20x30",
+                image: "PMCP_23041.jpeg",
+                disponible: true
+            },
+            // {
+            //     id: "PMCP 23065",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23074",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23515C",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "PMCP 23618",
+            //     category: "carreaux-20x30",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
+                id: "PMCP 239833C",
+                category: "carreaux-20x30",
+                image: "PMCP_239833.jpeg",
+                disponible: true
+            },
+
+            /* ── carreaux-20x40 ── */
+            {
+                id: "23302",
+                category: "carreaux-20x40",
+                image: "23302.jpeg",
+                disponible: true
+            }, {
+                id: "2D9901",
+                category: "carreaux-20x40",
+                image: "2D9901.jpeg",
+                disponible: true
+            }, {
+                id: "P22132",
+                category: "carreaux-20x40",
+                image: "P22132.jpeg",
+                disponible: true
+            },
+            // {
+            //     id: "W24017",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "W24022",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
+                id: "W24032C",
+                category: "carreaux-20x40",
+                image: "W24032.jpeg",
+                disponible: true
+            }, {
+                id: "W24048",
+                category: "carreaux-20x40",
+                image: "W24048.jpeg",
+                disponible: true
+            },
+            // {
+            //     id: "W24056",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // },
+
+            /* ── carreaux-25x40 ── */
+
+            {
+                id: "PMCP 4117C",
+                category: "carreaux-25x40",
+                image: "PMCP_4117.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42001C",
+                category: "carreaux-25x40",
+                image: "PMCP_42001.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42003",
+                category: "carreaux-25x40",
+                image: "PMCP_42003.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42005",
+                category: "carreaux-25x40",
+                image: "PMCP_42005.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42006",
+                category: "carreaux-25x40",
+                image: "PMCP_42006.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42012C",
+                category: "carreaux-25x40",
+                image: "PMCP_42012.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42018",
+                category: "carreaux-25x40",
+                image: "PMCP_42018.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42019C",
+                category: "carreaux-25x40",
+                image: "PMCP_42019.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42022C",
+                category: "carreaux-25x40",
+                image: "PMCP_42022.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42023C",
+                category: "carreaux-25x40",
+                image: "PMCP_42023.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42026",
+                category: "carreaux-25x40",
+                image: "PMCP_42026.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42027C",
+                category: "carreaux-25x40",
+                image: "PMCP_42027.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42029C",
+                category: "carreaux-25x40",
+                image: "PMCP_42029.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42032",
+                category: "carreaux-25x40",
+                image: "PMCP_42032.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42035C",
+                category: "carreaux-25x40",
+                image: "PMCP_42035.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42037C",
+                category: "carreaux-25x40",
+                image: "PMCP_42037.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42041C",
+                category: "carreaux-25x40",
+                image: "PMCP_42041.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42042C",
+                category: "carreaux-25x40",
+                image: "PMCP_42042.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42043C",
+                category: "carreaux-25x40",
+                image: "PMCP_42043.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42044",
+                category: "carreaux-25x40",
+                image: "PMCP_42044.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42047C",
+                category: "carreaux-25x40",
+                image: "PMCP_42047.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42049",
+                category: "carreaux-25x40",
+                image: "PMCP_42049.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42053C",
+                category: "carreaux-25x40",
+                image: "PMCP_42053.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42054C",
+                category: "carreaux-25x40",
+                image: "PMCP_42054.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42055C",
+                category: "carreaux-25x40",
+                image: "PMCP_42055.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42059",
+                category: "carreaux-25x40",
+                image: "PMCP_42059.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42060",
+                category: "carreaux-25x40",
+                image: "PMCP_42060.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42064",
+                category: "carreaux-25x40",
+                image: "PMCP_42064.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42065",
+                category: "carreaux-25x40",
+                image: "PMCP_42065.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42067",
+                category: "carreaux-25x40",
+                image: "PMCP_42067.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42069",
+                category: "carreaux-25x40",
+                image: "PMCP_42069.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42070",
+                category: "carreaux-25x40",
+                image: "PMCP_42070.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 42072",
+                category: "carreaux-25x40",
+                image: "PMCP_42072.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42073",
+                category: "carreaux-25x40",
+                image: "PMCP_42073.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42074",
+                category: "carreaux-25x40",
+                image: "PMCP_42074.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42075",
+                category: "carreaux-25x40",
+                image: "PMCP_42075.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42076",
+                category: "carreaux-25x40",
+                image: "PMCP_42076.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42078",
+                category: "carreaux-25x40",
+                image: "PMCP_42078.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42079",
+                category: "carreaux-25x40",
+                image: "PMCP_42079.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42080",
+                category: "carreaux-25x40",
+                image: "PMCP_42080.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42081",
+                category: "carreaux-25x40",
+                image: "PMCP_42081.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42082",
+                category: "carreaux-25x40",
+                image: "PMCP_42082.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42083",
+                category: "carreaux-25x40",
+                image: "PMCP_42083.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 4229G",
+                category: "carreaux-25x40",
+                image: "PMCP_4229.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 4583C",
+                category: "carreaux-25x40",
+                image: "PMCP_4583.jpeg",
+                disponible: true
+            },
+
+            {
+                id: "PMCP 4639",
+                category: "carreaux-25x40",
+                image: "PMCP_4639.jpeg",
+                disponible: true
+            },
+
+            /* ── carreaux-30x30 ── */
+            {
+                id: "FGP 33001",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33007C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33008C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33010",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: false
+            }, // hidden
+            {
+                id: "FGP 33014",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33015",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33021",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33022",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33023",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33024",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33025",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33026",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33027",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33028",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33029",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33030",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33032",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33034",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33035",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33036",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33039",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33112",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33126",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33130",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "FGP 33132",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33001C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33003C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33005",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33021",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33041C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33091C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33101C",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33171",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33225",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33233",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NM 33281",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NMC 33005",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NMC 33095",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NMC 33105",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "NMC 33225",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "YM 33031",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "YM 33064",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            }, {
+                id: "YM 33191",
+                category: "carreaux-30x30",
+                image: "",
+                disponible: true
+            },
+
+            /* ── carreaux-30x60 ── */
+            {
+                id: "Carreau Grand 30x60",
+                category: "carreaux-30x60",
+                image: "",
+                disponible: true
+            },
+
+            /* ── carreaux-40x40 ── */
+            {
+                id: "Carreau 40x40",
+                category: "carreaux-40x40",
+                image: "",
+                disponible: true
+            },
+
+            /* ── carreaux-50x50 ── */
+            {
+                id: "Carreau 50x50",
+                category: "carreaux-50x50",
+                image: "",
+                disponible: true
+            },
+
+            /* ── carreaux-60x60 ── */
+            {
+                id: "Carreau 60x60",
+                category: "carreaux-60x60",
+                image: "",
+                disponible: true
+            },
+
+            /* ── carreaux-60x120 ── */
+            {
+                id: "Carreau Rectangulaire 60x120",
+                category: "carreaux-60x120",
+                image: "",
+                disponible: true
+            },
+
+            /* ── tole ── */
+            {
+                id: "Tôle ondulé",
+                category: "tole",
+                image: "Tole_ondulee.JPG",
+                disponible: true
+            }, {
+                id: "Tôle Acier",
+                category: "tole",
+                image: "",
+                disponible: false
+            }, // hidden
+
+            /* ── accessoire ── */
+            {
+                id: "Joint Silicone",
+                category: "accessoire",
+                image: "",
+                disponible: true
+            }, {
+                id: "Croix Espacement",
+                category: "accessoire",
+                image: "",
+                disponible: true
+            },
+
+            /* ── ciment-colle ── */
+            {
+                id: "Ciment Colle Blanc",
+                category: "ciment-colle",
+                image: "",
+                disponible: true
+            }, {
+                id: "Colle Époxy",
+                category: "ciment-colle",
+                image: "",
+                disponible: false
+            } // hidden
+        ];
+
+        /* ============================================================
+           MÉTA CATÉGORIES
+        ============================================================ */
+        const categoryMeta = {
+            "carreaux-20x20": {
+                label: "Carreaux 20×20",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-20x30": {
+                label: "Carreaux 20×30",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-20x40": {
+                label: "Carreaux 20×40",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-25x40": {
+                label: "Carreaux 25×40",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-30x30": {
+                label: "Carreaux 30×30",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-30x60": {
+                label: "Carreaux 30×60",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-40x40": {
+                label: "Carreaux 40×40",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-50x50": {
+                label: "Carreaux 50×50",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-60x60": {
+                label: "Carreaux 60×60",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "carreaux-60x120": {
+                label: "Carreaux 60×120",
+                icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'
+            },
+            "tole": {
+                label: "Tôle",
+                icon: '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>'
+            },
+            "accessoire": {
+                label: "Accessoires",
+                icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>'
+            },
+            "ciment-colle": {
+                label: "Ciment Colle",
+                icon: '<svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>'
+            },
+        };
+
+        /* ============================================================
+           HELPERS
+        ============================================================ */
+        function getInitials(str) {
+            return str.trim().split(/[\s\-_]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+        }
+
+        function resolveImageUrl(filename) {
+            if (!filename) return '';
+            if (filename.startsWith('http')) return filename;
+            return BASE_URL + filename;
+        }
+
+        function buildPlaceholder(label) {
+            const ph = document.createElement('div');
+            ph.className = 'card-placeholder';
+            const tile = document.createElement('div');
+            tile.className = 'placeholder-tile';
+            for (let i = 0; i < 4; i++) tile.appendChild(document.createElement('span'));
+            const id = document.createElement('div');
+            id.className = 'placeholder-id';
+            id.textContent = getInitials(label);
+            ph.appendChild(tile);
+            ph.appendChild(id);
+            return ph;
+        }
+
+        async function downloadImage(url, filename) {
+            try {
+                const res = await fetch(url);
+                const blob = await res.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            } catch (_) {
+                window.open(url, '_blank');
+            }
+        }
+
+        /* ── CARD BUILDER ── */
+        function buildCard(product, catLabel, delay) {
+            const imageUrl = resolveImageUrl(product.image);
+
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.style.animationDelay = delay + 'ms';
+
+            /* Stock badge */
+            const badge = document.createElement('div');
+            badge.className = 'badge-stock in-stock';
+            badge.innerHTML = '<span class="dot"></span> En stock';
+            card.appendChild(badge);
+
+            /* Download overlay (only if image) */
+            if (imageUrl) {
+                const dlOverlay = document.createElement('div');
+                dlOverlay.className = 'card-download-overlay';
+                const dlBtn = document.createElement('button');
+                dlBtn.className = 'btn-download-img';
+                dlBtn.title = 'Télécharger l\'image';
+                dlBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+                dlBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    downloadImage(imageUrl, product.image || product.id + '.jpg');
+                });
+                dlOverlay.appendChild(dlBtn);
+                card.appendChild(dlOverlay);
+            }
+
+            /* Image */
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'card-img-wrap';
+            if (imageUrl) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = product.id;
+                img.loading = 'lazy';
+                img.onerror = () => {
+                    imgWrap.innerHTML = '';
+                    imgWrap.appendChild(buildPlaceholder(product.id));
+                };
+                imgWrap.appendChild(img);
+            } else {
+                imgWrap.appendChild(buildPlaceholder(product.id));
+            }
+            card.appendChild(imgWrap);
+
+            /* Body */
+            const body = document.createElement('div');
+            body.className = 'card-body';
+
+            const idEl = document.createElement('div');
+            idEl.className = 'card-id';
+            idEl.textContent = product.id;
+            body.appendChild(idEl);
+
+            const catEl = document.createElement('div');
+            catEl.className = 'card-cat';
+            catEl.textContent = catLabel;
+            body.appendChild(catEl);
+
+            /* Stock row */
+            const stockRow = document.createElement('div');
+            stockRow.className = 'card-stock-row';
+            stockRow.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Disponible en Usine</span>`;
+            body.appendChild(stockRow);
+
+            card.appendChild(body);
+
+            /* Actions */
+            const actions = document.createElement('div');
+            actions.className = 'card-actions';
+
+            const waBtn = document.createElement('button');
+            waBtn.className = 'btn-wa';
+            waBtn.dataset.productId = product.id;
+            waBtn.dataset.productCat = catLabel;
+            waBtn.dataset.productImg = imageUrl;
+            waBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp`;
+            actions.appendChild(waBtn);
+
+            if (imageUrl) {
+                const dlBtn2 = document.createElement('button');
+                dlBtn2.className = 'btn-dl';
+                dlBtn2.title = 'Télécharger';
+                dlBtn2.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+                dlBtn2.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    downloadImage(imageUrl, product.image || product.id + '.jpg');
+                });
+                actions.appendChild(dlBtn2);
+            }
+
+            card.appendChild(actions);
+            return card;
+        }
+
+        /* ============================================================
+           BUILD PAGE
+        ============================================================ */
+        (function buildPage() {
+            const available = products.filter(p => p.disponible === true);
+            document.getElementById('total-count').textContent = available.length;
+
+            const grouped = {};
+            for (const cat of Object.keys(categoryMeta)) {
+                const items = available.filter(p => p.category === cat);
+                if (items.length > 0) grouped[cat] = items;
+            }
+
+            const container = document.getElementById('sections-container');
+            const navInner = document.getElementById('nav-inner');
+
+            if (Object.keys(grouped).length === 0) {
+                container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon-wrap">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h2>Aucun produit disponible</h2>
+        <p>Le stock sera mis à jour prochainement. Revenez bientôt.</p>
+      </div>`;
+                return;
+            }
+
+            const sectionEls = [];
+            let idx = 0;
+
+            for (const [cat, items] of Object.entries(grouped)) {
+                const meta = categoryMeta[cat] || {
+                    label: cat,
+                    icon: ''
+                };
+                const delay = idx * 70;
+
+                const section = document.createElement('section');
+                section.className = 'cat-section';
+                section.id = cat;
+                section.style.animationDelay = delay + 'ms';
+
+                const header = document.createElement('div');
+                header.className = 'cat-header';
+
+                const iconEl = document.createElement('div');
+                iconEl.className = 'cat-icon';
+                iconEl.innerHTML = meta.icon;
+                header.appendChild(iconEl);
+
+                const labelEl = document.createElement('div');
+                labelEl.className = 'cat-label';
+                labelEl.textContent = meta.label;
+                header.appendChild(labelEl);
+
+                const countEl = document.createElement('span');
+                countEl.className = 'cat-count';
+                countEl.textContent = items.length + ' produit' + (items.length > 1 ? 's' : '');
+                header.appendChild(countEl);
+
+                const line = document.createElement('div');
+                line.className = 'cat-line';
+                header.appendChild(line);
+
+                section.appendChild(header);
+
+                const grid = document.createElement('div');
+                grid.className = 'product-grid';
+                items.forEach((p, i) => grid.appendChild(buildCard(p, meta.label, i * 45)));
+                section.appendChild(grid);
+
+                container.appendChild(section);
+                sectionEls.push(section);
+
+                /* Nav link */
+                const btn = document.createElement('button');
+                btn.className = 'nav-btn';
+                btn.dataset.target = cat;
+                btn.innerHTML = `${meta.label} <span class="nav-count">${items.length}</span>`;
+
+                btn.addEventListener('click', function() {
+                    const hdr = document.querySelector('.site-header');
+                    const catNav = document.getElementById('cat-nav');
+
+                    // Hauteurs sécurisées
+                    const headerHeight = hdr && hdr.offsetHeight ? hdr.offsetHeight : 68;
+                    const navHeight = catNav && catNav.offsetHeight ? catNav.offsetHeight : 46;
+
+                    const offset = headerHeight + navHeight + 16;
+
+                    const targetPosition =
+                        section.getBoundingClientRect().top +
+                        window.pageYOffset -
+                        offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+                navInner.appendChild(btn);
+
+                idx++;
+            }
+
+            /* Active nav observer */
+            const navBtns = navInner.querySelectorAll('.nav-btn');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navBtns.forEach(b => b.classList.remove('active'));
+                        const active = navInner.querySelector('[data-target="' + entry.target.id + '"]');
+                        if (active) {
+                            active.classList.add('active');
+                            active.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '-80px 0px -60% 0px',
+                threshold: 0
+            });
+
+            sectionEls.forEach(s => observer.observe(s));
+        })();
+
+        /* ============================================================
+           MODAL WHATSAPP
+        ============================================================ */
+        const modal = document.getElementById('wa-modal');
+        const closeBtn = document.getElementById('modal-close');
+        let currentProduct = {};
+
+        function openModal(data) {
+            currentProduct = data;
+            document.getElementById('modal-name').textContent = data.id;
+            document.getElementById('modal-cat').textContent = data.category;
+
+            const thumb = document.getElementById('modal-thumb');
+            const thumbPh = document.getElementById('modal-thumb-ph');
+            thumb.innerHTML = '';
+
+            if (data.image) {
+                const img = document.createElement('img');
+                img.src = data.image;
+                img.alt = data.id;
+                img.onerror = () => {
+                    thumb.innerHTML = '';
+                    thumbPh.textContent = data.id.slice(0, 2).toUpperCase();
+                    thumb.appendChild(thumbPh);
+                };
+                thumb.appendChild(img);
+            } else {
+                thumbPh.textContent = data.id.slice(0, 2).toUpperCase();
+                thumb.appendChild(thumbPh);
+            }
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        document.addEventListener('click', e => {
+            const btn = e.target.closest('.btn-wa');
+            if (!btn) return;
+            openModal({
+                id: btn.dataset.productId,
+                category: btn.dataset.productCat,
+                image: btn.dataset.productImg
+            });
+        });
+
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const number = item.dataset.number;
+                const id = currentProduct.id || 'Non précisé';
+                const cat = currentProduct.category || '';
+                const img = currentProduct.image || 'Non disponible';
+
+                const msg =
+                    "Bonjour \uD83D\uDC4B,\n\n" +
+                    "Je souhaite avoir plus d'informations sur le produit suivant :\n\n" +
+                    "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n" +
+                    "\uD83C\uDD94 R\u00E9f\u00E9rence : " + id + "\n" +
+                    "\uD83D\uDDC2\uFE0F Cat\u00E9gorie : " + cat + "\n" +
+                    "\uD83D\uDDBC\uFE0F Image : " + img + "\n" +
+                    "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n" +
+                    "Merci de bien vouloir me r\u00E9pondre \uD83D\uDE4F";
+
+                window.open("https://wa.me/" + number + "?text=" + encodeURIComponent(msg), '_blank');
+                closeModal();
+            });
+        });
+    </script>
+</body>
+
+</html>
