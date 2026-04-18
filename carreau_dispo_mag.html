@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carreaux Disponibles – Pilote Construction SARL</title>
+    <title>Stock Disponible – Pilote Construction SARL</title>
     <style>
-        /* ============================================================
-       RESET & BASE
-    ============================================================ */
-        
         *,
         *::before,
         *::after {
@@ -24,18 +20,15 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
+            background: #f4f5f7;
             color: #2c3e50;
             min-height: 100vh;
         }
-        /* ============================================================
-       ANIMATIONS
-    ============================================================ */
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(28px);
             }
             to {
                 opacity: 1;
@@ -46,7 +39,7 @@
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-40px);
+                transform: translateX(-36px);
             }
             to {
                 opacity: 1;
@@ -57,7 +50,7 @@
         @keyframes cardEntrance {
             from {
                 opacity: 0;
-                transform: scale(0.92) translateY(20px);
+                transform: scale(0.93) translateY(18px);
             }
             to {
                 opacity: 1;
@@ -74,21 +67,24 @@
             }
         }
         
-        @keyframes spin {
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-24px) scale(0.97);
+            }
             to {
-                transform: rotate(360deg);
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
-        /* ============================================================
-       HEADER
-    ============================================================ */
+        /* ── HEADER ── */
         
         .site-header {
             position: sticky;
             top: 0;
             z-index: 200;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            box-shadow: 0 4px 20px rgba(255, 165, 0, 0.35);
+            box-shadow: 0 4px 20px rgba(255, 165, 0, .35);
             padding: 0 24px;
         }
         
@@ -105,7 +101,7 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             min-width: 0;
         }
         
@@ -113,34 +109,31 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, .28);
+            border: 2px solid rgba(255, 255, 255, .5);
             color: #2c3e50;
             font-weight: 700;
-            font-size: 0.82rem;
+            font-size: .82rem;
             text-decoration: none;
             padding: 6px 14px;
             border-radius: 50px;
             white-space: nowrap;
-            transition: background 0.2s, transform 0.2s;
+            transition: background .2s, transform .2s;
         }
         
         .back-btn:hover {
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, .45);
             transform: translateX(-3px);
         }
         
-        .site-title {
-            font-size: 1.35rem;
+        .header-titles .site-title {
+            font-size: 1.3rem;
             font-weight: 800;
             color: #2c3e50;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         
-        .site-subtitle {
-            font-size: 0.78rem;
+        .header-titles .site-subtitle {
+            font-size: .76rem;
             color: #34495e;
             font-weight: 600;
         }
@@ -151,31 +144,29 @@
             gap: 6px;
             background: #2c3e50;
             color: #FFD700;
-            font-size: 0.82rem;
+            font-size: .82rem;
             font-weight: 700;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 50px;
             white-space: nowrap;
             flex-shrink: 0;
         }
         
-        .header-badge span {
+        .header-badge strong {
             background: #FFD700;
             color: #2c3e50;
             border-radius: 50px;
-            padding: 1px 8px;
-            font-size: 0.9rem;
+            padding: 1px 9px;
+            font-size: .9rem;
         }
-        /* ============================================================
-       SECTION NAV
-    ============================================================ */
+        /* ── NAV CATÉGORIES ── */
         
         .section-nav {
             position: sticky;
             top: 72px;
             z-index: 190;
             background: #2c3e50;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 14px rgba(0, 0, 0, .22);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
@@ -183,7 +174,7 @@
         }
         
         .section-nav::-webkit-scrollbar {
-            height: 4px;
+            height: 3px;
         }
         
         .section-nav::-webkit-scrollbar-track {
@@ -208,17 +199,17 @@
             display: inline-block;
             padding: 6px 16px;
             border-radius: 50px;
-            font-size: 0.82rem;
+            font-size: .8rem;
             font-weight: 700;
             color: #e9ecef;
             text-decoration: none;
             white-space: nowrap;
-            transition: background 0.2s, color 0.2s, transform 0.15s;
             border: 2px solid transparent;
+            transition: background .2s, color .2s, transform .15s;
         }
         
         .nav-link:hover {
-            background: rgba(255, 215, 0, 0.15);
+            background: rgba(255, 215, 0, .15);
             color: #FFD700;
             transform: translateY(-1px);
         }
@@ -226,26 +217,20 @@
         .nav-link.active {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #2c3e50;
-            border-color: transparent;
-            box-shadow: 0 2px 8px rgba(255, 165, 0, 0.4);
+            box-shadow: 0 2px 8px rgba(255, 165, 0, .4);
         }
-        /* ============================================================
-       MAIN CONTENT
-    ============================================================ */
+        /* ── MAIN ── */
         
         .main-content {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 32px 20px 60px;
+            padding: 36px 20px 64px;
         }
-        /* ============================================================
-       PAGE INTRO
-    ============================================================ */
         
         .page-intro {
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease both;
+            margin-bottom: 44px;
+            animation: fadeInUp .6s ease both;
         }
         
         .page-intro h1 {
@@ -263,49 +248,47 @@
         }
         
         .page-intro p {
-            font-size: 1rem;
-            color: #666;
-            max-width: 560px;
+            font-size: .98rem;
+            color: #777;
+            max-width: 520px;
             margin: 0 auto;
         }
-        /* ============================================================
-       CATEGORY SECTION
-    ============================================================ */
+        /* ── CATEGORY SECTION ── */
         
         .category-section {
-            margin-bottom: 56px;
-            animation: fadeInUp 0.6s ease both;
+            margin-bottom: 58px;
+            animation: fadeInUp .6s ease both;
         }
         
         .category-header {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 24px;
-            animation: slideInLeft 0.5s ease both;
+            margin-bottom: 22px;
+            animation: slideInLeft .5s ease both;
         }
         
         .category-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
             background: linear-gradient(135deg, #FFD700, #FFA500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+            box-shadow: 0 4px 14px rgba(255, 165, 0, .3);
         }
         
         .category-title {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: #2c3e50;
         }
         
         .category-count {
-            font-size: 0.82rem;
+            font-size: .78rem;
             font-weight: 700;
             background: #e9ecef;
             color: #34495e;
@@ -319,59 +302,68 @@
             background: linear-gradient(90deg, #FFD700 0%, transparent 100%);
             border-radius: 2px;
         }
-        /* ============================================================
-       PRODUCT GRID
-    ============================================================ */
+        /* ── GRID ── */
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             gap: 20px;
         }
-        /* ============================================================
-       PRODUCT CARD
-    ============================================================ */
+        /* ── CARD ── */
         
         .product-card {
             background: #fff;
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
             display: flex;
             flex-direction: column;
-            transition: transform 0.25s, box-shadow 0.25s;
-            animation: cardEntrance 0.55s ease both;
+            transition: transform .25s, box-shadow .25s;
+            animation: cardEntrance .5s ease both;
             position: relative;
         }
         
         .product-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 32px rgba(255, 165, 0, 0.2);
+            box-shadow: 0 14px 34px rgba(255, 165, 0, .18);
         }
-        /* Disponible badge */
         
-        .badge-disponible {
+        .badge-dispo {
             position: absolute;
             top: 10px;
             left: 10px;
             z-index: 5;
             background: linear-gradient(135deg, #27ae60, #2ecc71);
             color: #fff;
-            font-size: 0.68rem;
+            font-size: .65rem;
             font-weight: 800;
-            letter-spacing: 0.04em;
+            letter-spacing: .06em;
             padding: 4px 10px;
             border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.4);
+            box-shadow: 0 2px 8px rgba(39, 174, 96, .4);
             text-transform: uppercase;
         }
-        /* Card image area */
+        
+        .badge-cat {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+            background: rgba(44, 62, 80, .72);
+            backdrop-filter: blur(4px);
+            color: #FFD700;
+            font-size: .62rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 50px;
+            letter-spacing: .04em;
+        }
         
         .card-image-wrap {
             position: relative;
             width: 100%;
-            padding-top: 72%;
-            background: #e9ecef;
+            padding-top: 70%;
+            background: #eef0f2;
             overflow: hidden;
         }
         
@@ -380,12 +372,12 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            transition: transform 0.4s;
+            object-fit: cover;
+            transition: transform .4s;
         }
         
         .product-card:hover .card-image-wrap img {
-            transform: scale(1.06);
+            transform: scale(1.07);
         }
         /* Placeholder */
         
@@ -400,47 +392,56 @@
             gap: 8px;
         }
         
+        .card-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, .3) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite linear;
+            pointer-events: none;
+        }
+        
+        .placeholder-icon {
+            font-size: 2.2rem;
+            opacity: .3;
+        }
+        
         .placeholder-initials {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 900;
             color: #adb5bd;
-            letter-spacing: 0.05em;
+            letter-spacing: .06em;
             text-align: center;
             padding: 0 8px;
             line-height: 1.1;
         }
-        
-        .placeholder-icon {
-            font-size: 2rem;
-            opacity: 0.35;
-        }
         /* Card body */
         
         .card-body {
-            padding: 14px 14px 8px;
+            padding: 14px 14px 6px;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
         
         .card-name {
-            font-size: 0.9rem;
+            font-size: .88rem;
             font-weight: 800;
             color: #2c3e50;
             line-height: 1.3;
         }
         
-        .card-desc {
-            font-size: 0.77rem;
-            color: #666;
-            line-height: 1.4;
-            flex: 1;
+        .card-category-label {
+            font-size: .72rem;
+            color: #999;
+            font-weight: 600;
         }
-        /* Card actions */
+        /* Actions */
         
         .card-actions {
-            padding: 10px 14px 14px;
+            padding: 10px 12px 14px;
             display: flex;
             gap: 8px;
         }
@@ -450,59 +451,40 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: #fff;
-            font-size: 0.75rem;
+            font-size: .75rem;
             font-weight: 700;
-            padding: 8px 10px;
+            padding: 9px 10px;
             border-radius: 10px;
-            text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s;
+            transition: transform .15s, box-shadow .15s;
         }
         
         .btn-wa:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 5px 14px rgba(37, 211, 102, .38);
         }
         
-        .btn-dl {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #e9ecef;
-            color: #2c3e50;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 8px 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.15s, transform 0.15s;
-            white-space: nowrap;
+        .btn-wa svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
         }
-        
-        .btn-dl:hover {
-            background: #dee2e6;
-            transform: translateY(-2px);
-        }
-        /* ============================================================
-       EMPTY STATE
-    ============================================================ */
+        /* Empty state */
         
         .empty-state {
             text-align: center;
-            padding: 64px 24px;
-            animation: fadeInUp 0.5s ease both;
+            padding: 72px 24px;
+            animation: fadeInUp .5s ease both;
         }
         
         .empty-state .empty-icon {
             font-size: 3.5rem;
             margin-bottom: 16px;
-            opacity: 0.5;
+            opacity: .45;
         }
         
         .empty-state h2 {
@@ -514,11 +496,9 @@
         
         .empty-state p {
             color: #888;
-            font-size: 0.95rem;
+            font-size: .95rem;
         }
-        /* ============================================================
-       FOOTER
-    ============================================================ */
+        /* ── FOOTER ── */
         
         .site-footer {
             background: linear-gradient(135deg, #2c3e50, #34495e);
@@ -535,7 +515,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 32px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
         
         .footer-brand {
@@ -544,7 +524,7 @@
         }
         
         .footer-brand h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 800;
             margin-bottom: 6px;
             background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -554,18 +534,18 @@
         }
         
         .footer-brand p {
-            font-size: 0.85rem;
+            font-size: .84rem;
             color: #adb5bd;
             line-height: 1.6;
         }
         
         .footer-contact {
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
         }
         
         .footer-contact h4 {
-            font-size: 0.95rem;
+            font-size: .92rem;
             font-weight: 700;
             color: #FFD700;
             margin-bottom: 10px;
@@ -576,9 +556,9 @@
             align-items: center;
             gap: 6px;
             color: #e9ecef;
-            font-size: 0.88rem;
+            font-size: .86rem;
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
         
         .footer-contact a:hover {
@@ -586,141 +566,210 @@
         }
         
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, .1);
             padding-top: 16px;
-            font-size: 0.8rem;
+            font-size: .78rem;
             color: #adb5bd;
             text-align: center;
         }
-        /* ================= MODAL WHATSAPP ================= */
+        /* ── MODAL WHATSAPP ── */
         
-        .modal {
+        .modal-backdrop {
             position: fixed;
             inset: 0;
-            z-index: 999;
-            display: none;
-        }
-        
-        .modal.active {
-            display: block;
-        }
-        
-        .modal-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        
-        .modal-content {
-            position: relative;
-            background: #fff;
-            max-width: 400px;
-            width: 90%;
-            margin: 80px auto;
+            z-index: 900;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            border-radius: 16px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: fadeInUp 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s;
         }
         
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: all;
         }
-        /* contacts */
         
-        .whatsapp-contacts {
+        .modal-box {
+            background: #fff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 420px;
+            max-height: 88vh;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, .22);
+            transform: translateY(-20px) scale(.97);
+            transition: transform .28s;
+        }
+        
+        .modal-backdrop.open .modal-box {
+            transform: translateY(0) scale(1);
+            animation: modalIn .28s ease;
+        }
+        
+        .modal-header {
+            padding: 20px 20px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
             gap: 12px;
-            margin-top: 20px;
         }
         
-        .contact-link {
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
+        .modal-product-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .modal-label {
+            font-size: .7rem;
             font-weight: 700;
-            background: rgba(37, 211, 102, 0.1);
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        
+        .modal-product-name {
+            font-size: 1.05rem;
+            font-weight: 800;
             color: #2c3e50;
-            border: 2px solid rgba(37, 211, 102, 0.2);
-            transition: 0.2s;
+            margin-top: 2px;
         }
         
-        .contact-link:hover {
-            background: #25D366;
-            color: white;
+        .modal-product-cat {
+            font-size: .78rem;
+            color: #888;
+            margin-top: 2px;
         }
         
-        .contacts {
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 12px;
-            color: #222;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .modal-close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: #f0f0f0;
+            color: #555;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background .2s;
         }
         
-        .contacts-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #c9a200;
+        .modal-close-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .modal-divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin: 16px 20px 0;
+        }
+        
+        .modal-subtitle {
+            font-size: .78rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            padding: 14px 20px 10px;
         }
         
         .contacts-list {
+            overflow-y: auto;
+            padding: 0 12px 16px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         
-        .contact {
+        .contact-item {
             display: flex;
-            flex-direction: column;
-            padding: 12px 15px;
-            background: #ffffff;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: 0.3s ease;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: #f9f9f9;
             border: 1px solid #eee;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all .2s;
         }
         
-        .contact:hover {
-            transform: translateX(5px);
-            border-color: #c9a200;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        .contact-item:hover {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-color: transparent;
+            color: #fff;
+            transform: translateX(4px);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, .3);
         }
         
-        .contact--highlight {
-            background: linear-gradient(135deg, #fff8dc, #f5e6a8);
-            border-color: #e0c85c;
+        .contact-item.highlight {
+            background: linear-gradient(135deg, #fffbea, #fff3cd);
+            border-color: #ffe08a;
+        }
+        
+        .contact-item.highlight:hover {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-color: transparent;
+            color: #fff;
+        }
+        
+        .contact-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            font-weight: 900;
+            color: #2c3e50;
+            flex-shrink: 0;
+            transition: background .2s;
+        }
+        
+        .contact-item:hover .contact-avatar {
+            background: rgba(255, 255, 255, .25);
+            color: #fff;
+        }
+        
+        .contact-details {
+            flex: 1;
+            min-width: 0;
         }
         
         .contact-name {
-            font-weight: 600;
-            font-size: 14px;
-            color: #111;
+            font-size: .86rem;
+            font-weight: 700;
+            line-height: 1.2;
         }
         
         .contact-role {
-            font-size: 12px;
-            color: #666;
+            font-size: .72rem;
+            opacity: .65;
+            margin-top: 1px;
         }
-        /* responsive */
         
-        @media (max-width: 480px) {
-            .modal-content {
-                margin: 40px auto;
-            }
+        .contact-wa-icon {
+            flex-shrink: 0;
+            opacity: .5;
+            transition: opacity .2s;
         }
-        /* ============================================================
-       RESPONSIVE
-    ============================================================ */
+        
+        .contact-item:hover .contact-wa-icon {
+            opacity: 1;
+        }
+        /* ── RESPONSIVE ── */
         
         @media (max-width: 768px) {
             .header-inner {
@@ -729,115 +778,73 @@
             .section-nav {
                 top: 60px;
             }
-            .site-title {
+            .header-titles .site-title {
                 font-size: 1.05rem;
             }
-            .back-btn {
-                font-size: 0.75rem;
-                padding: 5px 10px;
-            }
-            .header-badge {
-                font-size: 0.75rem;
-                padding: 5px 10px;
-            }
-            .page-intro h1 {
-                font-size: 1.5rem;
-            }
             .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
                 gap: 14px;
-            }
-            .category-title {
-                font-size: 1.2rem;
             }
         }
         
         @media (max-width: 480px) {
             .header-inner {
                 gap: 8px;
-                padding: 0 12px;
-            }
-            .site-title {
-                font-size: 0.95rem;
-            }
-            .site-subtitle {
-                display: none;
             }
             .back-btn span {
+                display: none;
+            }
+            .header-titles .site-subtitle {
                 display: none;
             }
             .main-content {
                 padding: 20px 12px 48px;
             }
             .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-                gap: 12px;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
             }
             .card-name {
-                font-size: 0.82rem;
+                font-size: .82rem;
             }
-        }
-        /* Shimmer on placeholder */
-        
-        .card-placeholder::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
-            background-size: 200% 100%;
-            animation: shimmer 2.5s infinite linear;
-            pointer-events: none;
-        }
-        
-        .card-placeholder {
-            position: relative;
+            .modal-backdrop {
+                padding: 12px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ============================================================
-       HEADER
-  ============================================================ -->
+    <!-- HEADER -->
     <header class="site-header">
         <div class="header-inner">
             <div class="header-left">
-                <a href="index.html" class="back-btn">
-          &#8592; <span>Retour au Catalogue</span>
-        </a>
-                <div>
+                <a href="index.html" class="back-btn">&#8592; <span>Retour au Catalogue</span></a>
+                <div class="header-titles">
                     <div class="site-title">Pilote Construction SARL</div>
-                    <div class="site-subtitle">Carreaux Disponibles</div>
+                    <div class="site-subtitle">Stock Disponible</div>
                 </div>
             </div>
-            <div class="header-badge">
-                En stock&nbsp;<span id="total-count">0</span>
-            </div>
+            <div class="header-badge">En stock &nbsp;<strong id="total-count">0</strong></div>
         </div>
     </header>
 
-    <!-- ============================================================
-       SECTION NAV  (built by JS)
-  ============================================================ -->
+    <!-- NAV CATÉGORIES -->
     <nav class="section-nav" id="section-nav" aria-label="Navigation par catégorie">
         <div class="section-nav-inner" id="nav-inner"></div>
     </nav>
 
-    <!-- ============================================================
-       MAIN
-  ============================================================ -->
-    <main class="main-content" id="main-content">
+    <!-- MAIN -->
+    <main class="main-content">
         <div class="page-intro">
-            <h1>Carreaux <span>Disponibles</span></h1>
-            <p>Parcourez uniquement les produits actuellement en stock, organisés par catégorie.</p>
+            <h1>Produits <span>Disponibles</span></h1>
+            <p>Parcourez les produits actuellement en stock, organisés par catégorie.</p>
         </div>
         <div id="sections-container"></div>
     </main>
 
-    <!-- ============================================================
-       FOOTER
-  ============================================================ -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-top">
@@ -850,90 +857,152 @@
                     <a href="tel:+237670078114">&#128222; +237 670 078 114</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2022 Pilote Construction SARL. Tous droits réservés.
-            </div>
+            <div class="footer-bottom">&copy; 2025 Pilote Construction SARL. Tous droits réservés.</div>
         </div>
     </footer>
 
+    <!-- MODAL WHATSAPP -->
+    <div class="modal-backdrop" id="wa-modal" role="dialog" aria-modal="true" aria-label="Choisir un contact WhatsApp">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-product-info">
+                    <div class="modal-label">Demande de renseignement</div>
+                    <div class="modal-product-name" id="modal-product-name">—</div>
+                    <div class="modal-product-cat" id="modal-product-cat"></div>
+                </div>
+                <button class="modal-close-btn" id="modal-close" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-divider"></div>
+            <div class="modal-subtitle">Choisissez un conseiller</div>
+            <div class="contacts-list">
 
-    <div class="contacts">
-        <h2 class="contacts-title">Contacts WhatsApp</h2>
+                <div class="contact-item highlight" data-number="237680631763">
+                    <div class="contact-avatar">DZ</div>
+                    <div class="contact-details">
+                        <div class="contact-name">Mr DJOUA ZIDANE</div>
+                        <div class="contact-role">Président Directeur Général</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-        <div class="contacts-list">
+                <div class="contact-item highlight" data-number="237673902656">
+                    <div class="contact-avatar">TD</div>
+                    <div class="contact-details">
+                        <div class="contact-name">Mr TCHIOFFO DIBORES</div>
+                        <div class="contact-role">Directeur Général</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact contact--highlight" data-number="237680631763">
-                <span class="contact-name">Mr DJOUA ZIDANE</span>
-                <span class="contact-role">Président Directeur Général</span>
-            </a>
+                <div class="contact-item" data-number="237653891677">
+                    <div class="contact-avatar">DJ</div>
+                    <div class="contact-details">
+                        <div class="contact-name">Mr DJOUA JORES</div>
+                        <div class="contact-role">Chef d'agence 4e étage</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact contact--highlight" data-number="237673902656">
-                <span class="contact-name">Mr TCHIOFFO DIBORES</span>
-                <span class="contact-role">Directeur Général</span>
-            </a>
+                <div class="contact-item" data-number="237670078114">
+                    <div class="contact-avatar">MK</div>
+                    <div class="contact-details">
+                        <div class="contact-name">MATIP KEVIN</div>
+                        <div class="contact-role">Développeur</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237653891677">
-                <span class="contact-name">Mr DJOUA JORES</span>
-                <span class="contact-role">Chef d'agence 4e étage</span>
-            </a>
+                <div class="contact-item" data-number="237691137367">
+                    <div class="contact-avatar">TJ</div>
+                    <div class="contact-details">
+                        <div class="contact-name">TOSCANI JUNIOR</div>
+                        <div class="contact-role">Assistant comptable</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237670078114">
-                <span class="contact-name">MATIP KEVIN</span>
-                <span class="contact-role">Développeur</span>
-            </a>
+                <div class="contact-item" data-number="237682938890">
+                    <div class="contact-avatar">FD</div>
+                    <div class="contact-details">
+                        <div class="contact-name">FARELLE DIAMS</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237691137367">
-                <span class="contact-name">TOSCANI JUNIOR</span>
-                <span class="contact-role">Assistant comptable</span>
-            </a>
+                <div class="contact-item" data-number="237682938962">
+                    <div class="contact-avatar">LJ</div>
+                    <div class="contact-details">
+                        <div class="contact-name">LOIC JARDEL</div>
+                        <div class="contact-role">Conseiller de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237682938890">
-                <span class="contact-name">FARELLE DIAMS</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
+                <div class="contact-item" data-number="237686736345">
+                    <div class="contact-avatar">FO</div>
+                    <div class="contact-details">
+                        <div class="contact-name">FORTUNE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237682938962">
-                <span class="contact-name">LOIC JARDEL</span>
-                <span class="contact-role">Conseiller de vente</span>
-            </a>
+                <div class="contact-item" data-number="237682938948">
+                    <div class="contact-avatar">LI</div>
+                    <div class="contact-details">
+                        <div class="contact-name">LINARESSE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237686736345">
-                <span class="contact-name">FORTUNE</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
+                <div class="contact-item" data-number="237682939429">
+                    <div class="contact-avatar">MA</div>
+                    <div class="contact-details">
+                        <div class="contact-name">MANUELLA</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237682938948">
-                <span class="contact-name">LINARESSE</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
+                <div class="contact-item" data-number="237652063393">
+                    <div class="contact-avatar">DE</div>
+                    <div class="contact-details">
+                        <div class="contact-name">DESIRE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237682939429">
-                <span class="contact-name">MANUELLA</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
+                <div class="contact-item" data-number="237682939236">
+                    <div class="contact-avatar">ST</div>
+                    <div class="contact-details">
+                        <div class="contact-name">STONE</div>
+                        <div class="contact-role">Conseillère de vente</div>
+                    </div>
+                    <svg class="contact-wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                </div>
 
-            <a href="#" class="contact" data-number="237652063393">
-                <span class="contact-name">DESIRE</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
-
-            <a href="#" class="contact" data-number="237682939236">
-                <span class="contact-name">STONE</span>
-                <span class="contact-role">Conseillère de vente</span>
-            </a>
-
+            </div>
         </div>
     </div>
 
-
-    <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
     <script>
         /* ============================================================
-                                                                                                                                                                                                                                                                                                                                                       DATA
-                                                                                                                                                                                                                                                                                                                                                       Set disponible: false to hide a product.
-                                                                                                                                                                                                                                                                                                                                                    ============================================================ */
+                     CONFIG
+                  ============================================================ */
+        const BASE_URL = "https://catalogue-chez-pilote-construction.vercel.app/";
+
+        /* ============================================================
+           DONNÉES PRODUITS
+           Champs :
+             id          – référence interne
+             name        – nom affiché sur la carte  (à remplir)
+             category    – clé de catégorie
+             image       – nom du fichier image (ex: "FGP_22003.jpeg") ou "" si aucune
+             disponible  – true = visible | false = masqué
+        ============================================================ */
         const products = [
             /* ── carreaux-20x20 ── */
             {
@@ -1731,48 +1800,49 @@
             } // hidden
         ];
 
+
         /* ============================================================
-           CATEGORY META
+           CATÉGORIE META
         ============================================================ */
         const categoryMeta = {
             "carreaux-20x20": {
-                label: "20x20",
+                label: "Carreaux 20×20",
                 icon: "&#9632;"
             },
             "carreaux-20x30": {
-                label: "20x30",
+                label: "Carreaux 20×30",
                 icon: "&#9632;"
             },
             "carreaux-20x40": {
-                label: "20x40",
+                label: "Carreaux 20×40",
                 icon: "&#9632;"
             },
             "carreaux-25x40": {
-                label: "25x40",
+                label: "Carreaux 25×40",
                 icon: "&#9632;"
             },
             "carreaux-30x30": {
-                label: "30x30",
+                label: "Carreaux 30×30",
                 icon: "&#9632;"
             },
             "carreaux-30x60": {
-                label: "30x60",
+                label: "Carreaux 30×60",
                 icon: "&#9632;"
             },
             "carreaux-40x40": {
-                label: "40x40",
+                label: "Carreaux 40×40",
                 icon: "&#9632;"
             },
             "carreaux-50x50": {
-                label: "50x50",
+                label: "Carreaux 50×50",
                 icon: "&#9632;"
             },
             "carreaux-60x60": {
-                label: "60x60",
+                label: "Carreaux 60×60",
                 icon: "&#9632;"
             },
             "carreaux-60x120": {
-                label: "60x120",
+                label: "Carreaux 60×120",
                 icon: "&#9632;"
             },
             "tole": {
@@ -1780,150 +1850,126 @@
                 icon: "&#127968;"
             },
             "accessoire": {
-                label: "Accessoire",
+                label: "Accessoires",
                 icon: "&#128295;"
             },
             "ciment-colle": {
                 label: "Ciment Colle",
                 icon: "&#129521;"
-            }
+            },
         };
 
         /* ============================================================
            HELPERS
         ============================================================ */
-        function getInitials(name) {
-            return name
-                .split(/[\s\-_]+/)
-                .filter(Boolean)
-                .slice(0, 2)
-                .map(w => w[0].toUpperCase())
-                .join('');
+        function getInitials(str) {
+            return str.trim().split(/[\s\-_]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
         }
 
-
-
-        function buildCard(product, delay) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.style.animationDelay = delay + 'ms';
-
-            // Disponible badge
-            const badge = document.createElement('div');
-            badge.className = 'badge-disponible';
-            badge.textContent = 'Disponible';
-            card.appendChild(badge);
-
-            // Image wrap
-            const imgWrap = document.createElement('div');
-            imgWrap.className = 'card-image-wrap';
-
-            if (product.image) {
-                const img = document.createElement('img');
-                img.src = product.image;
-                img.alt = product.id;
-                img.loading = 'lazy';
-                // Fallback to placeholder if image fails to load
-                img.onerror = function() {
-                    imgWrap.removeChild(img);
-                    imgWrap.appendChild(buildPlaceholder(product.id));
-                };
-                imgWrap.appendChild(img);
-            } else {
-                imgWrap.appendChild(buildPlaceholder(product.id));
-            }
-            card.appendChild(imgWrap);
-
-            // Body
-            const body = document.createElement('div');
-            body.className = 'card-body';
-
-            const name = document.createElement('div');
-            name.className = 'card-name';
-            name.textContent = product.id;
-            body.appendChild(name);
-
-            if (product.description) {
-                const desc = document.createElement('div');
-                desc.className = 'card-desc';
-                desc.textContent = product.description;
-                body.appendChild(desc);
-            }
-            card.appendChild(body);
-
-            // Actions
-            const actions = document.createElement('div');
-            actions.className = 'card-actions';
-
-            const waBtn = document.createElement('button');
-            waBtn.className = 'btn-wa open-whatsapp-modal';
-
-            waBtn.dataset.name = product.id;
-            waBtn.dataset.description = product.description || '';
-            waBtn.dataset.image = product.image || '';
-
-            waBtn.innerHTML = 'WhatsApp';
-            actions.appendChild(waBtn);
-
-            if (product.image) {
-                const dlBtn = document.createElement('a');
-                dlBtn.className = 'btn-dl';
-                dlBtn.href = product.image;
-                dlBtn.download = product.image;
-                dlBtn.title = 'Télécharger';
-                dlBtn.innerHTML = '&#8595;';
-                actions.appendChild(dlBtn);
-            }
-
-            card.appendChild(actions);
-            return card;
+        function resolveImageUrl(filename) {
+            if (!filename) return '';
+            if (filename.startsWith('http')) return filename;
+            return BASE_URL + filename;
         }
 
-        function buildPlaceholder(name) {
+        function buildPlaceholder(label) {
             const ph = document.createElement('div');
             ph.className = 'card-placeholder';
             const icon = document.createElement('div');
             icon.className = 'placeholder-icon';
-            icon.innerHTML = '&#9633;'; // tile icon
+            icon.innerHTML = '&#9633;';
             const initials = document.createElement('div');
             initials.className = 'placeholder-initials';
-            initials.textContent = getInitials(name);
+            initials.textContent = getInitials(label);
             ph.appendChild(icon);
             ph.appendChild(initials);
             return ph;
+        }
+
+        function buildCard(product, catLabel, delay) {
+            const displayName = product.name || product.id;
+            const imageUrl = resolveImageUrl(product.image);
+
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.style.animationDelay = delay + 'ms';
+
+            const badgeDispo = document.createElement('div');
+            badgeDispo.className = 'badge-dispo';
+            badgeDispo.textContent = 'Disponible';
+            card.appendChild(badgeDispo);
+
+            const badgeCat = document.createElement('div');
+            badgeCat.className = 'badge-cat';
+            badgeCat.textContent = catLabel;
+            card.appendChild(badgeCat);
+
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'card-image-wrap';
+
+            if (imageUrl) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = displayName;
+                img.loading = 'lazy';
+                img.onerror = function() {
+                    imgWrap.removeChild(img);
+                    imgWrap.appendChild(buildPlaceholder(displayName));
+                };
+                imgWrap.appendChild(img);
+            } else {
+                imgWrap.appendChild(buildPlaceholder(displayName));
+            }
+            card.appendChild(imgWrap);
+
+            const body = document.createElement('div');
+            body.className = 'card-body';
+
+            const nameEl = document.createElement('div');
+            nameEl.className = 'card-name';
+            nameEl.textContent = displayName;
+            body.appendChild(nameEl);
+
+            const catEl = document.createElement('div');
+            catEl.className = 'card-category-label';
+            catEl.textContent = 'Réf: ' + product.id;
+            body.appendChild(catEl);
+
+            card.appendChild(body);
+
+            const actions = document.createElement('div');
+            actions.className = 'card-actions';
+
+            const waBtn = document.createElement('button');
+            waBtn.className = 'btn-wa';
+            waBtn.dataset.productName = displayName;
+            waBtn.dataset.productId = product.id;
+            waBtn.dataset.productCat = catLabel;
+            waBtn.dataset.productImg = imageUrl;
+            waBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.857L.057 23.535a.75.75 0 0 0 .921.921l5.688-1.482A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.51-5.21-1.4l-.37-.22-3.84 1 1.01-3.77-.24-.39A9.969 9.969 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp';
+            actions.appendChild(waBtn);
+
+            card.appendChild(actions);
+            return card;
         }
 
         /* ============================================================
            BUILD PAGE
         ============================================================ */
         (function buildPage() {
-            // 1. Filter to available only
             const available = products.filter(p => p.disponible === true);
-
-            // 2. Update total count badge
             document.getElementById('total-count').textContent = available.length;
 
-            // 3. Group by category (preserving insertion order from categoryMeta)
             const grouped = {};
             for (const cat of Object.keys(categoryMeta)) {
                 const items = available.filter(p => p.category === cat);
                 if (items.length > 0) grouped[cat] = items;
-            }
-            // Also catch any unknown categories
-            for (const p of available) {
-                if (!categoryMeta[p.category] && !grouped[p.category]) {
-                    grouped[p.category] = [];
-                }
-                if (!categoryMeta[p.category]) {
-                    grouped[p.category].push(p);
-                }
             }
 
             const container = document.getElementById('sections-container');
             const navInner = document.getElementById('nav-inner');
 
             if (Object.keys(grouped).length === 0) {
-                // Show empty state
                 const es = document.createElement('div');
                 es.className = 'empty-state';
                 es.innerHTML = '<div class="empty-icon">&#128722;</div><h2>Aucun produit disponible</h2><p>Revenez bientôt, le stock sera mis à jour prochainement.</p>';
@@ -1931,23 +1977,21 @@
                 return;
             }
 
-            let sectionIndex = 0;
             const sectionEls = [];
+            let idx = 0;
 
             for (const [cat, items] of Object.entries(grouped)) {
                 const meta = categoryMeta[cat] || {
                     label: cat,
                     icon: '&#9632;'
                 };
-                const delay = sectionIndex * 80;
+                const delay = idx * 80;
 
-                /* ---- Section element ---- */
                 const section = document.createElement('section');
                 section.className = 'category-section';
                 section.id = cat;
                 section.style.animationDelay = delay + 'ms';
 
-                /* ---- Section header ---- */
                 const header = document.createElement('div');
                 header.className = 'category-header';
 
@@ -1972,20 +2016,16 @@
 
                 section.appendChild(header);
 
-                /* ---- Product grid ---- */
                 const grid = document.createElement('div');
                 grid.className = 'product-grid';
-
                 items.forEach((product, i) => {
-                    const cardDelay = i * 50;
-                    grid.appendChild(buildCard(product, cardDelay));
+                    grid.appendChild(buildCard(product, meta.label, i * 50));
                 });
-
                 section.appendChild(grid);
+
                 container.appendChild(section);
                 sectionEls.push(section);
 
-                /* ---- Nav link ---- */
                 const link = document.createElement('a');
                 link.className = 'nav-link';
                 link.href = '#' + cat;
@@ -1993,133 +2033,113 @@
                 link.dataset.target = cat;
                 navInner.appendChild(link);
 
-                sectionIndex++;
+                idx++;
             }
 
-            /* ============================================================
-               ACTIVE NAV ON SCROLL  (IntersectionObserver)
-            ============================================================ */
+            /* Active nav on scroll */
             const navLinks = navInner.querySelectorAll('.nav-link');
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            navLinks.forEach(l => l.classList.remove('active'));
-                            const active = navInner.querySelector('[data-target="' + entry.target.id + '"]');
-                            if (active) {
-                                active.classList.add('active');
-                                // Scroll nav to keep active link visible
-                                active.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'nearest',
-                                    inline: 'center'
-                                });
-                            }
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        const active = navInner.querySelector('[data-target="' + entry.target.id + '"]');
+                        if (active) {
+                            active.classList.add('active');
+                            active.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
                         }
-                    });
-                }, {
-                    rootMargin: '-100px 0px -60% 0px',
-                    threshold: 0
-                }
-            );
+                    }
+                });
+            }, {
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            });
 
             sectionEls.forEach(s => observer.observe(s));
 
-            /* ============================================================
-               SMOOTH SCROLL for nav links (offset for sticky bars)
-            ============================================================ */
+            /* Smooth scroll nav links */
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const targetId = this.dataset.target;
-                    const targetEl = document.getElementById(targetId);
+                    const targetEl = document.getElementById(this.dataset.target);
                     if (!targetEl) return;
-
-                    // Calculate offset: header + section-nav heights
-                    const header = document.querySelector('.site-header');
+                    const hdr = document.querySelector('.site-header');
                     const secNav = document.getElementById('section-nav');
-                    const offset = (header ? header.offsetHeight : 72) +
-                        (secNav ? secNav.offsetHeight : 44) +
-                        16;
-
-                    const top = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+                    const offset = (hdr ? hdr.offsetHeight : 72) + (secNav ? secNav.offsetHeight : 44) + 16;
                     window.scrollTo({
-                        top,
+                        top: targetEl.getBoundingClientRect().top + window.pageYOffset - offset,
                         behavior: 'smooth'
                     });
                 });
             });
-
         })();
 
-        // ===== MODAL WHATSAPP =====
-
-        const modal = document.getElementById('whatsapp-modal');
-        const closeBtn = document.getElementById('whatsapp-close');
-        const overlay = modal.querySelector('.modal-overlay');
-
+        /* ============================================================
+           MODAL WHATSAPP
+        ============================================================ */
+        const modal = document.getElementById('wa-modal');
+        const closeBtn = document.getElementById('modal-close');
         let currentProduct = {};
 
-        // ouvrir modal
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('open-whatsapp-modal')) {
+        function openModal(productData) {
+            currentProduct = productData;
+            document.getElementById('modal-product-name').textContent = productData.name;
+            document.getElementById('modal-product-cat').textContent = productData.category;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
 
-                currentProduct = {
-                    name: e.target.dataset.name,
-                    description: e.target.dataset.description,
-                    image: e.target.dataset.image
-                };
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
 
-                modal.classList.add('active');
-            }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
         });
 
-        // fermer modal
-        closeBtn.onclick = () => modal.classList.remove('active');
-        overlay.onclick = () => modal.classList.remove('active');
-
-        // redirection whatsapp
-        document.querySelectorAll('.contact-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                const number = link.dataset.number;
-
-                const message = `Bonjour, je suis intéressé par ${currentProduct.name}
-Description: ${currentProduct.description}
-Image: ${currentProduct.image}`;
-
-                const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-
-                window.open(url, '_blank');
+        /* Open modal on WhatsApp button click */
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-wa');
+            if (!btn) return;
+            openModal({
+                name: btn.dataset.productName,
+                id: btn.dataset.productId,
+                category: btn.dataset.productCat,
+                image: btn.dataset.productImg,
             });
         });
 
-        document.querySelectorAll('.contact').forEach(function(contact) {
-            contact.addEventListener('click', function(e) {
+        /* Contact click → open WhatsApp */
+        document.querySelectorAll('.contact-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
                 e.preventDefault();
+                const number = this.dataset.number;
+                const name = currentProduct.name || 'Non précisé';
+                const ref = currentProduct.id || '';
+                const cat = currentProduct.category || '';
+                const img = currentProduct.image || 'Non disponible';
 
-                var number = this.dataset.number;
+                const message =
+                    "Bonjour \uD83D\uDC4B,\n\n" +
+                    "Je souhaite avoir plus d'informations sur le produit suivant :\n\n" +
+                    "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n" +
+                    "\uD83D\uDCE6 Produit : " + name + "\n" +
+                    "\uD83C\uDD94 R\u00E9f\u00E9rence : " + ref + "\n" +
+                    "\uD83D\uDDC2\uFE0F Cat\u00E9gorie : " + cat + "\n" +
+                    "\uD83D\uDDBC\uFE0F Image : " + img + "\n" +
+                    "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n" +
+                    "Merci de bien vouloir me r\u00E9pondre \uD83D\uDE4F";
 
-                var baseURL = "https://catalogue-chez-pilote-construction.vercel.app/";
-
-                var name = currentProduct && currentProduct.name ? currentProduct.name : "Non précisé";
-                var description = currentProduct && currentProduct.description ? currentProduct.description : "Non précisée";
-                var image = currentProduct && currentProduct.image ? baseURL + currentProduct.image : "Non disponible";
-
-                var message = "Bonjour 👋,\n\n" +
-                    "Je souhaite avoir plus d’informations sur le produit suivant :\n\n" +
-                    "━━━━━━━━━━━━━━━\n" +
-                    "📦 Nom : " + name + "\n" +
-                    "📝 Description : " + description + "\n" +
-                    "🖼️ Image : " + image + "\n" +
-                    "━━━━━━━━━━━━━━━\n\n" +
-                    "Merci de bien vouloir me répondre 🙏";
-
-                var url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
-
-                window.open(url, '_blank');
+                window.open("https://wa.me/" + number + "?text=" + encodeURIComponent(message), '_blank');
+                closeModal();
             });
         });
     </script>
