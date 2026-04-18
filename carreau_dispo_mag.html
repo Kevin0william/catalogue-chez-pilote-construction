@@ -658,6 +658,59 @@
             background: #25D366;
             color: white;
         }
+        
+        .contacts {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            color: #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contacts-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #c9a200;
+        }
+        
+        .contacts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .contact:hover {
+            transform: translateX(5px);
+            border-color: #c9a200;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact--highlight {
+            background: linear-gradient(135deg, #fff8dc, #f5e6a8);
+            border-color: #e0c85c;
+        }
+        
+        .contact-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #111;
+        }
+        
+        .contact-role {
+            font-size: 12px;
+            color: #666;
+        }
         /* responsive */
         
         @media (max-width: 480px) {
@@ -804,55 +857,71 @@
     </footer>
 
 
-    <div id="whatsapp-modal" class="modal">
-        <div class="modal-overlay"></div>
+    <div class="contacts">
+        <h2 class="contacts-title">Contacts WhatsApp</h2>
 
-        <div class="modal-content">
-            <button class="modal-close" id="whatsapp-close">&times;</button>
+        <div class="contacts-list">
 
-            <h2>Choisissez un contact</h2>
+            <a href="#" class="contact contact--highlight" data-number="237680631763">
+                <span class="contact-name">Mr DJOUA ZIDANE</span>
+                <span class="contact-role">Président Directeur Général</span>
+            </a>
 
-            <div class="whatsapp-contacts">
-                <a href="#" class="contact-link" data-number="237680631763" style="background-color: gold;">
-                Mr DJOUA ZIDANE <span style="font-size: 12px;">(President directeur general)</span>
-                </a>
+            <a href="#" class="contact contact--highlight" data-number="237673902656">
+                <span class="contact-name">Mr TCHIOFFO DIBORES</span>
+                <span class="contact-role">Directeur Général</span>
+            </a>
 
-                <a href="#" class="contact-link" data-number="237673902656" style="background-color: gold;">
-                Mr TCHIOFFO DIBORES <span style="font-size: 12px;">(Directeur general)</span>
-                </a>
+            <a href="#" class="contact" data-number="237653891677">
+                <span class="contact-name">Mr DJOUA JORES</span>
+                <span class="contact-role">Chef d'agence 4e étage</span>
+            </a>
 
-                <a href="#" class="contact-link" data-number="237653891677">
-                Mr DJOUA JORES <span style="font-size: 12px;">(Chef d'agence 4 etage)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237670078114">
-                MATIP KEVIN <span style="font-size: 12px;">(Developpeur)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682938890">
-                TOSCANI JUNIOR <span style="font-size: 12px;">(Assistant comptable)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682938890">
-                FARELLE DIAMS <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682938962">
-                LOIC JARDEL <span style="font-size: 12px;">(Conseiller de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237686736345">
-                FORTUNE <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682938948">
-                LINARESSE <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682939429">
-                MANUELLA <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237652063393">
-                DESIRE <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
-                <a href="#" class="contact-link" data-number="237682939236">
-                STONE <span style="font-size: 12px;">(Conseillere de vente)</span>
-                </a>
+            <a href="#" class="contact" data-number="237670078114">
+                <span class="contact-name">MATIP KEVIN</span>
+                <span class="contact-role">Développeur</span>
+            </a>
 
-            </div>
+            <a href="#" class="contact" data-number="237691137367">
+                <span class="contact-name">TOSCANI JUNIOR</span>
+                <span class="contact-role">Assistant comptable</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237682938890">
+                <span class="contact-name">FARELLE DIAMS</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237682938962">
+                <span class="contact-name">LOIC JARDEL</span>
+                <span class="contact-role">Conseiller de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237686736345">
+                <span class="contact-name">FORTUNE</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237682938948">
+                <span class="contact-name">LINARESSE</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237682939429">
+                <span class="contact-name">MANUELLA</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237652063393">
+                <span class="contact-name">DESIRE</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
+            <a href="#" class="contact" data-number="237682939236">
+                <span class="contact-name">STONE</span>
+                <span class="contact-role">Conseillère de vente</span>
+            </a>
+
         </div>
     </div>
 
@@ -862,9 +931,9 @@
   ============================================================ -->
     <script>
         /* ============================================================
-                                                                                                                                                                                                                                                                                                                       DATA
-                                                                                                                                                                                                                                                                                                                       Set disponible: false to hide a product.
-                                                                                                                                                                                                                                                                                                                    ============================================================ */
+                                                                                                                                                                                                                                                                                                                                                       DATA
+                                                                                                                                                                                                                                                                                                                                                       Set disponible: false to hide a product.
+                                                                                                                                                                                                                                                                                                                                                    ============================================================ */
         const products = [
             /* ── carreaux-20x20 ── */
             {
@@ -2022,6 +2091,33 @@ Description: ${currentProduct.description}
 Image: ${currentProduct.image}`;
 
                 const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+                window.open(url, '_blank');
+            });
+        });
+
+        document.querySelectorAll('.contact').forEach(function(contact) {
+            contact.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                var number = this.dataset.number;
+
+                var baseURL = "https://catalogue-chez-pilote-construction.vercel.app/";
+
+                var name = currentProduct && currentProduct.name ? currentProduct.name : "Non précisé";
+                var description = currentProduct && currentProduct.description ? currentProduct.description : "Non précisée";
+                var image = currentProduct && currentProduct.image ? baseURL + currentProduct.image : "Non disponible";
+
+                var message = "Bonjour 👋,\n\n" +
+                    "Je souhaite avoir plus d’informations sur le produit suivant :\n\n" +
+                    "━━━━━━━━━━━━━━━\n" +
+                    "📦 Nom : " + name + "\n" +
+                    "📝 Description : " + description + "\n" +
+                    "🖼️ Image : " + image + "\n" +
+                    "━━━━━━━━━━━━━━━\n\n" +
+                    "Merci de bien vouloir me répondre 🙏";
+
+                var url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
 
                 window.open(url, '_blank');
             });

@@ -844,3 +844,30 @@ Image: ${currentProduct.image}`;
         window.open(url, '_blank');
     });
 });
+
+document.querySelectorAll('.contact').forEach(function(contact) {
+    contact.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        var number = this.dataset.number;
+
+        var baseURL = "https://catalogue-chez-pilote-construction.vercel.app/";
+
+        var name = currentProduct && currentProduct.name ? currentProduct.name : "Non précisé";
+        var description = currentProduct && currentProduct.description ? currentProduct.description : "Non précisée";
+        var image = currentProduct && currentProduct.image ? baseURL + currentProduct.image : "Non disponible";
+
+        var message = "Bonjour 👋,\n\n" +
+            "Je souhaite avoir plus d’informations sur le produit suivant :\n\n" +
+            "━━━━━━━━━━━━━━━\n" +
+            "📦 Nom : " + name + "\n" +
+            "📝 Description : " + description + "\n" +
+            "🖼️ Image : " + image + "\n" +
+            "━━━━━━━━━━━━━━━\n\n" +
+            "Merci de bien vouloir me répondre 🙏";
+
+        var url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
+
+        window.open(url, '_blank');
+    });
+});
