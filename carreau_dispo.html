@@ -592,6 +592,79 @@
             color: #adb5bd;
             text-align: center;
         }
+        /* ================= MODAL WHATSAPP ================= */
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: none;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .modal-content {
+            position: relative;
+            background: #fff;
+            max-width: 400px;
+            width: 90%;
+            margin: 80px auto;
+            padding: 20px;
+            border-radius: 16px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        /* contacts */
+        
+        .whatsapp-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .contact-link {
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            background: rgba(37, 211, 102, 0.1);
+            color: #2c3e50;
+            border: 2px solid rgba(37, 211, 102, 0.2);
+            transition: 0.2s;
+        }
+        
+        .contact-link:hover {
+            background: #25D366;
+            color: white;
+        }
+        /* responsive */
+        
+        @media (max-width: 480px) {
+            .modal-content {
+                margin: 40px auto;
+            }
+        }
         /* ============================================================
        RESPONSIVE
     ============================================================ */
@@ -730,14 +803,56 @@
         </div>
     </footer>
 
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+            <button class="modal-close" id="whatsapp-close">&times;</button>
+
+            <h2>Choisissez un contact</h2>
+
+            <div class="whatsapp-contacts">
+                <a href="#" class="contact-link" data-number="237670078114" style="background-color: gold;">
+                Mr DJOUA ZIDANE ( PDG )
+                </a>
+
+                <a href="#" class="contact-link" data-number="237682939176" style="background-color: gold;">
+                Mr TCHIOFFO DIBORES ( DG )
+                </a>
+
+                <a href="#" class="contact-link" data-number="237681987598">
+                Mr DJOUA JORES
+                </a>
+                <a href="#" class="contact-link" data-number="237670078114">
+                MATIP KEVIN.dev
+                </a>
+                <a href="#" class="contact-link" data-number="237681987598">
+                LOIC JARDEL
+                </a>
+                <a href="#" class="contact-link" data-number="237681987598">
+                PHARELLE DIAMS
+                </a>
+                <a href="#" class="contact-link" data-number="237681987598">
+                WAH LINARESSE
+                </a>
+                <a href="#" class="contact-link" data-number="237681987598">
+                MANUELLA
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
     <script>
         /* ============================================================
-                                                       DATA
-                                                       Set disponible: false to hide a product.
-                                                    ============================================================ */
+                                                                                                                                                                                                                                                                                                       DATA
+                                                                                                                                                                                                                                                                                                       Set disponible: false to hide a product.
+                                                                                                                                                                                                                                                                                                    ============================================================ */
         const products = [
             /* ── carreaux-20x20 ── */
             {
@@ -899,7 +1014,7 @@
             {
                 id: "PMCP 23041C",
                 category: "carreaux-20x30",
-                image: "",
+                image: "PMCP_23041.jpeg",
                 disponible: true
             },
             // {
@@ -934,346 +1049,305 @@
             {
                 id: "23302",
                 category: "carreaux-20x40",
-                image: "",
+                image: "23302.jpeg",
                 disponible: true
             }, {
                 id: "2D9901",
                 category: "carreaux-20x40",
-                image: "",
+                image: "2D9901.jpeg",
                 disponible: true
             }, {
                 id: "P22132",
                 category: "carreaux-20x40",
-                image: "",
+                image: "P22132.jpeg",
                 disponible: true
-            }, {
-                id: "W24017",
-                category: "carreaux-20x40",
-                image: "",
-                disponible: true
-            }, {
-                id: "W24022",
-                category: "carreaux-20x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+            // {
+            //     id: "W24017",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // }, {
+            //     id: "W24022",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // }, 
+            {
                 id: "W24032C",
                 category: "carreaux-20x40",
-                image: "",
+                image: "W24032.jpeg",
                 disponible: true
             }, {
                 id: "W24048",
                 category: "carreaux-20x40",
-                image: "",
-                disponible: true
-            }, {
-                id: "W24056",
-                category: "carreaux-20x40",
-                image: "",
+                image: "W24048.jpeg",
                 disponible: true
             },
+            // {
+            //     id: "W24056",
+            //     category: "carreaux-20x40",
+            //     image: "",
+            //     disponible: true
+            // },
 
             /* ── carreaux-25x40 ── */
+
             {
-                id: "AVARIS",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
                 id: "PMCP 4117C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_4117.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42001C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42001.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42003",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42003.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42005",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42005.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42006",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42006.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42012C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42012.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42015C",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42018",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42018.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42019C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42019.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42021C",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42022C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42022.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42023C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42023.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42025",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42026",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42026.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42027C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42027.jpeg",
                 disponible: true
             }, {
-                id: "PMCP 42028",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: false
-            }, // hidden
-            {
                 id: "PMCP 42029C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42029.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42030",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42032",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42032.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42034",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42035C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42035.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42037C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42037.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42039C",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42041C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42041.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42042C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42042.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42043C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42043.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42044",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42044.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42047C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42047.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42049",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42049.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42050C",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
-                id: "PMCP 42051",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42053C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42053.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42054C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42054.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42055C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42055.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42059",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42059.jpeg",
                 disponible: true
             }, {
-                id: "PMCP 42061",
+                id: "PMCP 42060",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42060.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42062",
+            },
+
+            {
+                id: "PMCP 42064",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42064.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42065",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42065.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42066",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42067",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42067.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42068",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42069",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42069.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42070",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42070.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42071",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 42072",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42072.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42073",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42073.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42074",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42074.jpeg",
+                disponible: true
+            }, {
+                id: "PMCP 42075",
+                category: "carreaux-25x40",
+                image: "PMCP_42075.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42076",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42076.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42078",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42078.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42079",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42079.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42080",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42080.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42081",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42081.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42082",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42082.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 42083",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_42083.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 42084",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 4229G",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_4229.jpeg",
                 disponible: true
             }, {
                 id: "PMCP 4583C",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_4583.jpeg",
                 disponible: true
-            }, {
-                id: "PMCP 4595AC",
-                category: "carreaux-25x40",
-                image: "",
-                disponible: true
-            }, {
+            },
+
+            {
                 id: "PMCP 4639",
                 category: "carreaux-25x40",
-                image: "",
+                image: "PMCP_4639.jpeg",
                 disponible: true
             },
 
@@ -1646,10 +1720,7 @@
                 .join('');
         }
 
-        function waLink(name) {
-            const msg = encodeURIComponent("Bonjour, je suis intéressé par " + name);
-            return "https://wa.me/237670078114?text=" + msg;
-        }
+
 
         function buildCard(product, delay) {
             const card = document.createElement('div');
@@ -1703,12 +1774,14 @@
             const actions = document.createElement('div');
             actions.className = 'card-actions';
 
-            const waBtn = document.createElement('a');
-            waBtn.className = 'btn-wa';
-            waBtn.href = waLink(product.id);
-            waBtn.target = '_blank';
-            waBtn.rel = 'noopener noreferrer';
-            waBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.737 5.467 2.027 7.773L0 32l8.469-2.004A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.787-1.863l-.487-.289-5.024 1.189 1.214-4.888-.316-.503A13.267 13.267 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.279-9.819c-.397-.199-2.354-1.163-2.719-1.296-.365-.132-.631-.199-.897.199-.265.397-1.031 1.296-1.264 1.562-.232.265-.464.298-.861.099-.397-.199-1.676-.617-3.193-1.97-1.18-1.052-1.977-2.35-2.21-2.748-.232-.397-.025-.612.175-.809.179-.178.397-.464.596-.696.199-.232.265-.397.397-.662.132-.265.066-.497-.033-.696-.099-.199-.897-2.163-1.23-2.96-.324-.777-.654-.672-.897-.684l-.763-.013c-.265 0-.696.099-.1061.497s-1.363 1.33-1.363 3.244 1.396 3.76 1.59 4.025c.199.265 2.748 4.196 6.657 5.887.93.401 1.656.641 2.221.821.933.296 1.783.254 2.454.154.748-.111 2.354-.962 2.686-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.762-.464z"/></svg> WhatsApp';
+            const waBtn = document.createElement('button');
+            waBtn.className = 'btn-wa open-whatsapp-modal';
+
+            waBtn.dataset.name = product.id;
+            waBtn.dataset.description = product.description || '';
+            waBtn.dataset.image = product.image || '';
+
+            waBtn.innerHTML = 'WhatsApp';
             actions.appendChild(waBtn);
 
             if (product.image) {
@@ -1898,6 +1971,49 @@
             });
 
         })();
+
+        // ===== MODAL WHATSAPP =====
+
+        const modal = document.getElementById('whatsapp-modal');
+        const closeBtn = document.getElementById('whatsapp-close');
+        const overlay = modal.querySelector('.modal-overlay');
+
+        let currentProduct = {};
+
+        // ouvrir modal
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('open-whatsapp-modal')) {
+
+                currentProduct = {
+                    name: e.target.dataset.name,
+                    description: e.target.dataset.description,
+                    image: e.target.dataset.image
+                };
+
+                modal.classList.add('active');
+            }
+        });
+
+        // fermer modal
+        closeBtn.onclick = () => modal.classList.remove('active');
+        overlay.onclick = () => modal.classList.remove('active');
+
+        // redirection whatsapp
+        document.querySelectorAll('.contact-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const number = link.dataset.number;
+
+                const message = `Bonjour, je suis intéressé par ${currentProduct.name}
+Description: ${currentProduct.description}
+Image: ${currentProduct.image}`;
+
+                const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+                window.open(url, '_blank');
+            });
+        });
     </script>
 </body>
 

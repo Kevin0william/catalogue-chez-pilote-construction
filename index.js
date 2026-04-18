@@ -214,416 +214,344 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Carreau 20x30 PMCP 239833C',
             image: 'PMCP_239833.jpeg'
         },
+
         // Carreaux 20x40
         {
             category: 'carreaux-20x40',
             name: '23302',
             description: 'Carreau 20x40 23302',
-            image: ''
+            image: '23302.jpeg'
         },
         {
             category: 'carreaux-20x40',
             name: '2D9901',
             description: 'Carreau 20x40 2D9901',
-            image: ''
+            image: '2D9901.jpeg'
         },
         {
             category: 'carreaux-20x40',
             name: 'P22132',
             description: 'Carreau 20x40 P22132',
-            image: ''
+            image: 'P22132.jpeg'
         },
-        {
-            category: 'carreaux-20x40',
-            name: 'W24017',
-            description: 'Carreau 20x40 W24017',
-            image: ''
-        },
-        {
-            category: 'carreaux-20x40',
-            name: 'W24022',
-            description: 'Carreau 20x40 W24022',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x40',
+        //     name: 'W24017',
+        //     description: 'Carreau 20x40 W24017',
+        //     image: ''
+        // },
+        // {
+        //     category: 'carreaux-20x40',
+        //     name: 'W24022',
+        //     description: 'Carreau 20x40 W24022',
+        //     image: ''
+        // },
         {
             category: 'carreaux-20x40',
             name: 'W24032C',
             description: 'Carreau 20x40 W24032C',
-            image: ''
+            image: 'W24032.jpeg'
         },
         {
             category: 'carreaux-20x40',
             name: 'W24048',
             description: 'Carreau 20x40 W24048',
-            image: ''
+            image: 'W24048.jpeg'
         },
-        {
-            category: 'carreaux-20x40',
-            name: 'W24056',
-            description: 'Carreau 20x40 W24056',
-            image: ''
-        },
+        // {
+        //     category: 'carreaux-20x40',
+        //     name: 'W24056',
+        //     description: 'Carreau 20x40 W24056',
+        //     image: ''
+        // },
+
         // Carreaux 25x40
-        {
-            category: 'carreaux-25x40',
-            name: 'AVARIS',
-            description: 'Carreau 25x40 AVARIS',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 4117C',
             description: 'Carreau 25x40 PMCP 4117C',
-            image: ''
+            image: 'PMCP_4117.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42001C',
             description: 'Carreau 25x40 PMCP 42001C',
-            image: ''
+            image: 'PMCP_42001.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42003',
             description: 'Carreau 25x40 PMCP 42003',
-            image: ''
+            image: 'PMCP_42003.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42005',
             description: 'Carreau 25x40 PMCP 42005',
-            image: ''
+            image: 'PMCP_42005.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42006',
             description: 'Carreau 25x40 PMCP 42006',
-            image: ''
+            image: 'PMCP_42006.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42012C',
             description: 'Carreau 25x40 PMCP 42012C',
-            image: ''
+            image: 'PMCP_42012.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42015C',
-            description: 'Carreau 25x40 PMCP 42015C',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42018',
             description: 'Carreau 25x40 PMCP 42018',
-            image: ''
+            image: 'PMCP_42018.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42019C',
             description: 'Carreau 25x40 PMCP 42019C',
-            image: ''
+            image: 'PMCP_42019.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42021C',
-            description: 'Carreau 25x40 PMCP 42021C',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42022C',
             description: 'Carreau 25x40 PMCP 42022C',
-            image: ''
+            image: 'PMCP_42022.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42023C',
             description: 'Carreau 25x40 PMCP 42023C',
-            image: ''
+            image: 'PMCP_42023.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42025',
-            description: 'Carreau 25x40 PMCP 42025',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42026',
             description: 'Carreau 25x40 PMCP 42026',
-            image: ''
+            image: 'PMCP_42026.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42027C',
             description: 'Carreau 25x40 PMCP 42027C',
-            image: ''
+            image: 'PMCP_42027.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42028',
-            description: 'Carreau 25x40 PMCP 42028',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42029C',
             description: 'Carreau 25x40 PMCP 42029C',
-            image: ''
+            image: 'PMCP_42029.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42030',
-            description: 'Carreau 25x40 PMCP 42030',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42032',
             description: 'Carreau 25x40 PMCP 42032',
-            image: ''
+            image: 'PMCP_42032.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42034',
-            description: 'Carreau 25x40 PMCP 42034',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42035C',
             description: 'Carreau 25x40 PMCP 42035C',
-            image: ''
+            image: 'PMCP_42035.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42037C',
             description: 'Carreau 25x40 PMCP 42037C',
-            image: ''
+            image: 'PMCP_42037.jpeg'
         },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42039C',
-            description: 'Carreau 25x40 PMCP 42039C',
-            image: ''
-        },
+
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42041C',
             description: 'Carreau 25x40 PMCP 42041C',
-            image: ''
+            image: 'PMCP_42041.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42042C',
             description: 'Carreau 25x40 PMCP 42042C',
-            image: ''
+            image: 'PMCP_42042.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42043C',
             description: 'Carreau 25x40 PMCP 42043C',
-            image: ''
+            image: 'PMCP_42043.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42044',
             description: 'Carreau 25x40 PMCP 42044',
-            image: ''
+            image: 'PMCP_42044.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42047C',
             description: 'Carreau 25x40 PMCP 42047C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42050C',
-            description: 'Carreau 25x40 PMCP 42050C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42051',
-            description: 'Carreau 25x40 PMCP 42051',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42053C',
-            description: 'Carreau 25x40 PMCP 42053C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42054C',
-            description: 'Carreau 25x40 PMCP 42054C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42055C',
-            description: 'Carreau 25x40 PMCP 42055C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42059',
-            description: 'Carreau 25x40 PMCP 42059',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42061',
-            description: 'Carreau 25x40 PMCP 42061',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42062',
-            description: 'Carreau 25x40 PMCP 42062',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42065',
-            description: 'Carreau 25x40 PMCP 42065',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42066',
-            description: 'Carreau 25x40 PMCP 42066',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42067',
-            description: 'Carreau 25x40 PMCP 42067',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42068',
-            description: 'Carreau 25x40 PMCP 42068',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42069',
-            description: 'Carreau 25x40 PMCP 42069',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42071',
-            description: 'Carreau 25x40 PMCP 42071',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42072',
-            description: 'Carreau 25x40 PMCP 42072',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42073',
-            description: 'Carreau 25x40 PMCP 42073',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42074',
-            description: 'Carreau 25x40 PMCP 42074',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42076',
-            description: 'Carreau 25x40 PMCP 42076',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42078',
-            description: 'Carreau 25x40 PMCP 42078',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42079',
-            description: 'Carreau 25x40 PMCP 42079',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42080',
-            description: 'Carreau 25x40 PMCP 42080',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42081',
-            description: 'Carreau 25x40 PMCP 42081',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42082',
-            description: 'Carreau 25x40 PMCP 42082',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42083',
-            description: 'Carreau 25x40 PMCP 42083',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 42084',
-            description: 'Carreau 25x40 PMCP 42084',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 4229G',
-            description: 'Carreau 25x40 PMCP 4229G',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 4583C',
-            description: 'Carreau 25x40 PMCP 4583C',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 4595AC',
-            description: 'Carreau 25x40 PMCP 4595AC',
-            image: ''
-        },
-        {
-            category: 'carreaux-25x40',
-            name: 'PMCP 4639',
-            description: 'Carreau 25x40 PMCP 4639',
-            image: ''
+            image: 'PMCP_42047.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42049',
             description: 'Carreau 25x40 PMCP 42049',
-            image: ''
+            image: 'PMCP_42049.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42053C',
+            description: 'Carreau 25x40 PMCP 42053C',
+            image: 'PMCP_42053.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42054C',
+            description: 'Carreau 25x40 PMCP 42054C',
+            image: 'PMCP_42054.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42055C',
+            description: 'Carreau 25x40 PMCP 42055C',
+            image: 'PMCP_42055.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42059',
+            description: 'Carreau 25x40 PMCP 42059',
+            image: 'PMCP_42059.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42060',
+            description: 'Carreau 25x40 PMCP 42060',
+            image: 'PMCP_42060.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42064',
+            description: 'Carreau 25x40 PMCP 42064',
+            image: 'PMCP_42064.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42065',
+            description: 'Carreau 25x40 PMCP 42065',
+            image: 'PMCP_42065.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42067',
+            description: 'Carreau 25x40 PMCP 42067',
+            image: 'PMCP_42067.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42069',
+            description: 'Carreau 25x40 PMCP 42069',
+            image: 'PMCP_42069.jpeg'
         },
         {
             category: 'carreaux-25x40',
             name: 'PMCP 42070',
             description: 'Carreau 25x40 PMCP 42070',
-            image: ''
+            image: 'PMCP_42070.jpeg'
         },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42072',
+            description: 'Carreau 25x40 PMCP 42072',
+            image: 'PMCP_42072.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42073',
+            description: 'Carreau 25x40 PMCP 42073',
+            image: 'PMCP_42073.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42074',
+            description: 'Carreau 25x40 PMCP 42074',
+            image: 'PMCP_42074.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42075',
+            description: 'Carreau 25x40 PMCP 42075',
+            image: 'PMCP_42075.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42076',
+            description: 'Carreau 25x40 PMCP 42076',
+            image: 'PMCP_42076.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42078',
+            description: 'Carreau 25x40 PMCP 42078',
+            image: 'PMCP_42078.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42079',
+            description: 'Carreau 25x40 PMCP 42079',
+            image: 'PMCP_42079.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42080',
+            description: 'Carreau 25x40 PMCP 42080',
+            image: 'PMCP_42080.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42081',
+            description: 'Carreau 25x40 PMCP 42081',
+            image: 'PMCP_42081.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42082',
+            description: 'Carreau 25x40 PMCP 42082',
+            image: 'PMCP_42082.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 42083',
+            description: 'Carreau 25x40 PMCP 42083',
+            image: 'PMCP_42083.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 4229G',
+            description: 'Carreau 25x40 PMCP 4229G',
+            image: 'PMCP_4229.jpeg'
+        },
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 4583C',
+            description: 'Carreau 25x40 PMCP 4583C',
+            image: 'PMCP_4583.jpeg'
+        },
+
+        {
+            category: 'carreaux-25x40',
+            name: 'PMCP 4639',
+            description: 'Carreau 25x40 PMCP 4639',
+            image: 'PMCP_4639.jpeg'
+        },
+
         // Carreaux 30x30
         /* ==================== CARREAUX 30x30 FGP ==================== */
         { category: 'carreaux-30x30', name: 'FGP 33001', description: 'Carreau 30x30 FGP 33001', image: '' },
@@ -764,7 +692,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>
-                <a href="https://wa.me/237670078114?text=Bonjour, je suis intéressé par ${product.name}. Description: ${product.description}. Image: ${product.image}" target="_blank" class="btn whatsapp-btn">WhatsApp</a>
+                <button class="btn whatsapp-btn open-whatsapp-modal"
+                    style="margin-bottom:10px"
+                    data-name="${product.name}"
+                    data-description="${product.description}"
+                    data-image="${product.image}">
+                    WhatsApp
+                </button>
                 <a href="${product.image}" download class="btn download-btn">Télécharger</a>
             `;
             container.appendChild(card);
@@ -859,5 +793,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', (e) => {
         populateList(e.target.value);
+    });
+});
+
+// ================= WHATSAPP MODAL =================
+
+const whatsappModal = document.getElementById('whatsapp-modal');
+const whatsappClose = document.getElementById('whatsapp-close');
+const whatsappOverlay = whatsappModal.querySelector('.modal-overlay');
+
+let currentProduct = {};
+
+// ouvrir modal
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('open-whatsapp-modal')) {
+
+        currentProduct = {
+            name: e.target.dataset.name,
+            description: e.target.dataset.description,
+            image: e.target.dataset.image
+        };
+
+        whatsappModal.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+});
+
+// fermer modal
+whatsappClose.addEventListener('click', closeWhatsappModal);
+whatsappOverlay.addEventListener('click', closeWhatsappModal);
+
+function closeWhatsappModal() {
+    whatsappModal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+}
+
+// gestion des liens
+document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const number = link.dataset.number;
+
+        const message = `Bonjour, je suis intéressé par ${currentProduct.name}.
+Description: ${currentProduct.description}
+Image: ${currentProduct.image}`;
+
+        const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, '_blank');
     });
 });
