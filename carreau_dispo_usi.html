@@ -54,6 +54,77 @@
             -webkit-font-smoothing: antialiased;
         }
         /* ── ANIMATIONS ── */
+        /* 🔐 AUTH OVERLAY */
+        
+        #auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* boîte */
+        
+        .auth-box {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: scaleIn 0.3s ease;
+        }
+        
+        .auth-box h2 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        
+        .auth-box p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        /* input */
+        
+        #auth-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 12px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        /* bouton */
+        
+        #auth-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #E6A817;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        #auth-btn:hover {
+            background: #C48A0A;
+        }
+        /* message erreur */
+        
+        #auth-error {
+            color: red;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
         
         @keyframes fadeUp {
             from {
@@ -909,7 +980,7 @@
         .modal-product-thumb img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
         
         .modal-product-thumb .thumb-ph {
@@ -1118,7 +1189,19 @@
 </head>
 
 <body>
+    <!-- 🔐 PANNEAU DE SECURITE -->
+    <div id="auth-overlay">
+        <div class="auth-box">
+            <h2>Accès sécurisé</h2>
+            <p>Veuillez entrer la clé d'accès</p>
 
+            <input type="password" id="auth-input" placeholder="Clé d'accès..." />
+
+            <button id="auth-btn">Valider</button>
+
+            <p id="auth-error"></p>
+        </div>
+    </div>
     <!-- ── HEADER ── -->
     <header class="site-header">
         <div class="header-inner">
@@ -1128,7 +1211,7 @@
                 </div>
                 <div class="brand-text">
                     <div class="brand-name">Pilote Construction SARL</div>
-                    <div class="brand-sub">Stock Usine</div>
+                    <div class="brand-sub">Stock Magasin</div>
                 </div>
             </div>
             <div class="header-right">
@@ -1151,7 +1234,7 @@
             <div class="hero-tag">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Disponible maintenant
             </div>
-            <h1>Carreaux & Matériaux<br /><em>Disponibles au Usine</em></h1>
+            <h1>Carreaux & Matériaux<br /><em>Disponibles a l'usine</em></h1>
             <p>Parcourez notre stock en temps réel, organisé par catégorie et format. Contactez-nous directement depuis chaque produit.</p>
         </div>
         <div id="sections-container"></div>
@@ -1321,9 +1404,48 @@
     </div>
 
     <script>
+        /* 🔐 CLE D'ACCES */
+        const ACCESS_KEY = "piloteconstruction@237";
+
+        /* éléments */
+        const overlay = document.getElementById('auth-overlay');
+        const input = document.getElementById('auth-input');
+        const btn = document.getElementById('auth-btn');
+        const errorMsg = document.getElementById('auth-error');
+
+        /* bloquer scroll */
+        document.body.style.overflow = "hidden";
+
+        /* validation */
+        function checkAccess() {
+            const value = input.value.trim();
+
+            if (value === ACCESS_KEY) {
+                overlay.style.display = "none";
+                document.body.style.overflow = "auto";
+            } else {
+                errorMsg.textContent = "Clé incorrecte, réessayez...";
+                input.value = "";
+            }
+        }
+
+        /* bouton */
+        btn.addEventListener('click', checkAccess);
+
+        /* entrer = valider */
+        input.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") {
+                checkAccess();
+            }
+        });
+
+        /* focus automatique */
+        window.addEventListener('load', () => {
+            input.focus();
+        });
         /* ============================================================
-                                                                   CONFIG
-                                                                ============================================================ */
+                                                                                           CONFIG
+                                                                                        ============================================================ */
         const BASE_URL = "https://catalogue-chez-pilote-construction.vercel.app/";
 
         /* ============================================================
@@ -1340,7 +1462,8 @@
                 id: "FGP 22003C",
                 category: "carreaux-20x20",
                 image: "FGP_22003.jpeg",
-                disponible: true
+                disponible: true,
+                stock: 1
             }, {
                 id: "FGP 22005C",
                 category: "carreaux-20x20",
@@ -2244,7 +2367,9 @@
             /* Stock badge */
             const badge = document.createElement('div');
             badge.className = 'badge-stock in-stock';
-            badge.innerHTML = '<span class="dot"></span> En stock';
+            badge.innerHTML = `<span class="dot">
+                ${product.disponible ? '<svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'}
+                </span> En stock`;
             card.appendChild(badge);
 
             /* Download overlay (only if image) */
@@ -2298,7 +2423,7 @@
             /* Stock row */
             const stockRow = document.createElement('div');
             stockRow.className = 'card-stock-row';
-            stockRow.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Disponible en Usine</span>`;
+            stockRow.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Disponible a l'usine</span>`;
             body.appendChild(stockRow);
 
             card.appendChild(body);

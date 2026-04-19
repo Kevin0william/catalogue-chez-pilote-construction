@@ -54,6 +54,77 @@
             -webkit-font-smoothing: antialiased;
         }
         /* ── ANIMATIONS ── */
+        /* 🔐 AUTH OVERLAY */
+        
+        #auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* boîte */
+        
+        .auth-box {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: scaleIn 0.3s ease;
+        }
+        
+        .auth-box h2 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        
+        .auth-box p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        /* input */
+        
+        #auth-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 12px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        /* bouton */
+        
+        #auth-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #E6A817;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        #auth-btn:hover {
+            background: #C48A0A;
+        }
+        /* message erreur */
+        
+        #auth-error {
+            color: red;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
         
         @keyframes fadeUp {
             from {
@@ -1118,7 +1189,19 @@
 </head>
 
 <body>
+    <!-- 🔐 PANNEAU DE SECURITE -->
+    <div id="auth-overlay">
+        <div class="auth-box">
+            <h2>Accès sécurisé</h2>
+            <p>Veuillez entrer la clé d'accès</p>
 
+            <input type="password" id="auth-input" placeholder="Clé d'accès..." />
+
+            <button id="auth-btn">Valider</button>
+
+            <p id="auth-error"></p>
+        </div>
+    </div>
     <!-- ── HEADER ── -->
     <header class="site-header">
         <div class="header-inner">
@@ -1321,9 +1404,48 @@
     </div>
 
     <script>
+        /* 🔐 CLE D'ACCES */
+        const ACCESS_KEY = "piloteconstruction@237";
+
+        /* éléments */
+        const overlay = document.getElementById('auth-overlay');
+        const input = document.getElementById('auth-input');
+        const btn = document.getElementById('auth-btn');
+        const errorMsg = document.getElementById('auth-error');
+
+        /* bloquer scroll */
+        document.body.style.overflow = "hidden";
+
+        /* validation */
+        function checkAccess() {
+            const value = input.value.trim();
+
+            if (value === ACCESS_KEY) {
+                overlay.style.display = "none";
+                document.body.style.overflow = "auto";
+            } else {
+                errorMsg.textContent = "Clé incorrecte, réessayez...";
+                input.value = "";
+            }
+        }
+
+        /* bouton */
+        btn.addEventListener('click', checkAccess);
+
+        /* entrer = valider */
+        input.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") {
+                checkAccess();
+            }
+        });
+
+        /* focus automatique */
+        window.addEventListener('load', () => {
+            input.focus();
+        });
         /* ============================================================
-                                                                           CONFIG
-                                                                        ============================================================ */
+                                                                                           CONFIG
+                                                                                        ============================================================ */
         const BASE_URL = "https://catalogue-chez-pilote-construction.vercel.app/";
 
         /* ============================================================
