@@ -4,106 +4,1407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue Pilote Construction SARL</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Catalogue — Pilote Construction SARL</title>
     <meta property="og:title" content="Carreaux modernes - Pilote Construction">
-    <meta property="og:description" content="Pilote Construction SARL propose une large gamme de carreaux et tôles de qualité pour vos projets de construction et rénovation . Découvrez notre catalogue en ligne dès maintenant !">
+    <meta property="og:description" content="Pilote Construction SARL propose une large gamme de carreaux et tôles de qualité pour vos projets de construction et rénovation. Découvrez notre catalogue en ligne dès maintenant !">
     <meta property="og:image" content="https://lh3.googleusercontent.com/p/AF1QipOwpqd8L0Z4nZCFw6UsJyitmCtQUDG-3NG-sJQo=s1360-w1360-h1020">
     <meta property="og:url" content="https://tonsite.com">
     <meta property="og:type" content="website">
+    <style>
+        /* ============================================================
+           PILOTE CONSTRUCTION SARL — Embedded CSS (Merged & Enhanced)
+           ============================================================ */
+        /* ── 1. RESET & VARIABLES ────────────────────────────────── */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+         :root {
+            --gold: #F5A623;
+            --gold-light: #FFD166;
+            --gold-dark: #D4860A;
+            --amber: #FF8C00;
+            --navy: #0D1B2A;
+            --navy-mid: #1B2D42;
+            --navy-light: #2C3E50;
+            --slate: #4A5568;
+            --smoke: #F3F5F8;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --text-main: #1A202C;
+            --text-muted: #718096;
+            --green: #06D6A0;
+            --green-dark: #059669;
+            --whatsapp: #25D366;
+            --whatsapp-dk: #128C7E;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, .07);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, .10);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, .16);
+            --shadow-xl: 0 32px 72px rgba(0, 0, 0, .22);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1);
+            --header-h: 80px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--smoke);
+            color: var(--text-main);
+            line-height: 1.65;
+            overflow-x: hidden;
+            padding-top: var(--header-h);
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+        }
+        /* ── 2. SCROLLBAR ──────────────────────────────────────── */
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--smoke);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), var(--amber));
+            border-radius: 4px;
+        }
+        /* ── 3. HEADER ─────────────────────────────────────────── */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-h);
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 36px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #223047 100%);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, .38);
+            border-bottom: 3px solid transparent;
+            background-clip: padding-box;
+            gap: 16px;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-light), var(--amber), var(--gold), var(--gold-light));
+            background-size: 300%;
+            animation: shimmerLine 4s linear infinite;
+        }
+        
+        @keyframes shimmerLine {
+            0% {
+                background-position: -300% center;
+            }
+            100% {
+                background-position: 300% center;
+            }
+        }
+        
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        
+        .header-brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(245, 166, 35, .35);
+        }
+        
+        header h1 {
+            font-size: clamp(1.05rem, 2.2vw, 1.65rem);
+            font-weight: 800;
+            color: var(--white);
+            white-space: nowrap;
+            letter-spacing: -.4px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, .4);
+            line-height: 1.2;
+        }
+        
+        header h1 small {
+            display: block;
+            font-size: .6em;
+            font-weight: 500;
+            color: var(--gold-light);
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            opacity: .85;
+        }
+        /* ── 4. HEADER BUTTONS ─────────────────────────────────── */
+        
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        
+        #menu-btn,
+        #search-btn,
+        .header-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .83rem;
+            letter-spacing: .3px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #menu-btn,
+        #search-btn {
+            background: rgba(255, 255, 255, .1);
+            color: var(--white);
+            border-color: rgba(255, 255, 255, .22);
+            backdrop-filter: blur(8px);
+        }
+        
+        #menu-btn:hover,
+        #search-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, .45);
+        }
+        
+        .header-link {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+            color: var(--navy);
+            border-color: var(--gold);
+            box-shadow: 0 4px 16px rgba(245, 166, 35, .3);
+            font-weight: 800;
+        }
+        
+        .header-link:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(245, 166, 35, .5);
+        }
+        
+        #menu-btn::after,
+        #search-btn::after,
+        .header-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, .28) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity .25s;
+        }
+        
+        #menu-btn:active::after,
+        #search-btn:active::after,
+        .header-link:active::after {
+            opacity: 1;
+        }
+        /* ── 5. MAIN ───────────────────────────────────────────── */
+        
+        main {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 52px 28px 100px;
+        }
+        /* ── 6. SECTION ────────────────────────────────────────── */
+        
+        section {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 50px 44px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp .65s ease both;
+            transition: box-shadow var(--transition), transform var(--transition);
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold-light), var(--amber), var(--gold));
+            border-radius: 3px 0 0 3px;
+        }
+        
+        section::after {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(245, 166, 35, .06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        section:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        section h2 {
+            font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 10px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid rgba(229, 180, 68, .3);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            animation: slideLeft .5s ease both;
+        }
+        
+        section h2::before {
+            content: '';
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            background: linear-gradient(135deg, var(--gold), var(--amber));
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(245, 166, 35, .18);
+            flex-shrink: 0;
+        }
+        
+        section:not(#mission) h2::after {
+            content: attr(data-count);
+            font-size: .7rem;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--navy);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            margin-left: auto;
+            letter-spacing: .3px;
+        }
+        
+        section>p {
+            color: var(--text-muted);
+            font-size: .97rem;
+            margin-bottom: 34px;
+            max-width: 70ch;
+            animation: slideRight .5s ease .12s both;
+        }
+        /* ── 7. MISSION ────────────────────────────────────────── */
+        
+        #mission {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3050 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 48px;
+            border-radius: var(--radius-xl);
+        }
+        
+        #mission::before {
+            background: linear-gradient(180deg, var(--gold-light), var(--gold));
+        }
+        
+        #mission::after {
+            background: radial-gradient(circle, rgba(255, 209, 102, .08) 0%, transparent 70%);
+        }
+        
+        #mission h2 {
+            color: var(--gold-light);
+            border-bottom-color: rgba(255, 209, 102, .2);
+            justify-content: center;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+        }
+        
+        #mission h2::before {
+            background: var(--gold-light);
+            box-shadow: 0 0 0 5px rgba(255, 209, 102, .2);
+        }
+        
+        #mission p {
+            color: rgba(255, 255, 255, .78);
+            font-size: 1.08rem;
+            max-width: 62ch;
+            margin: 16px auto 0;
+            line-height: 1.85;
+        }
+        
+        .mission-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .mission-stat {
+            text-align: center;
+        }
+        
+        .mission-stat strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+        
+        .mission-stat span {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .55);
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            font-weight: 600;
+        }
+        /* ── 8. CARDS CONTAINER ────────────────────────────────── */
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 26px;
+        }
+        /* ── 9. CARD ───────────────────────────────────────────── */
+        
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 22px 22px 26px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            border: 1.5px solid var(--border);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: cardIn .55s ease both;
+            animation-delay: calc(var(--card-index, 0) * 55ms);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(245, 166, 35, .05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            pointer-events: none;
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-light), var(--amber));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-9px) scale(1.015);
+            box-shadow: var(--shadow-lg), 0 0 0 1.5px var(--gold-light);
+            border-color: var(--gold-light);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 215px;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #eef0f4 0%, #f5f7fa 100%);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: block;
+        }
+        
+        .card:hover img {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .14);
+        }
+        
+        .card img[src=''],
+        .card img:not([src]) {
+            background: linear-gradient(135deg, #e4e8ef 0%, #d2d8e3 100%);
+        }
+        
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 7px;
+            text-align: center;
+            letter-spacing: -.15px;
+            transition: color var(--transition);
+        }
+        
+        .card:hover h3 {
+            color: var(--gold-dark);
+        }
+        
+        .card>p {
+            font-size: .875rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+            flex: 1;
+            line-height: 1.55;
+        }
+        /* ── 10. BUTTONS ───────────────────────────────────────── */
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .3px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-width: 110px;
+            max-width: 180px;
+            white-space: nowrap;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+            transition: left .5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-dk) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, .28);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(37, 211, 102, .45);
+            filter: brightness(1.07);
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(13, 27, 42, .2);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(13, 27, 42, .38);
+            background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+        }
+        /* ── 11. FOOTER ────────────────────────────────────────── */
+        
+        footer {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 64px 28px 44px;
+            border-top: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 200px;
+            background: radial-gradient(ellipse, rgba(245, 166, 35, .1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--amber));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(245, 166, 35, .35);
+        }
+        
+        .footer-content h3 {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, .3);
+        }
+        
+        .footer-content p {
+            color: rgba(255, 255, 255, .65);
+            font-size: .93rem;
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        .footer-content p strong {
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+        
+        .footer-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--amber));
+            margin: 22px auto;
+            border-radius: 2px;
+        }
+        /* ── 12. MODAL BASE ────────────────────────────────────── */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 16, 28, .78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            cursor: pointer;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(94vw, 680px);
+            max-height: 90vh;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 48px 44px 44px;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(245, 166, 35, .1);
+            z-index: 1;
+            border-top: 5px solid var(--gold);
+            animation: modalPop .3s cubic-bezier(.34, 1.56, .64, 1) both;
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 3px;
+        }
+        
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -46%) scale(.88);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .modal-content h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(229, 180, 68, .3);
+            letter-spacing: -.3px;
+        }
+        /* ── 13. MODAL CLOSE ───────────────────────────────────── */
+        
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--gold), var(--amber));
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(245, 166, 35, .32);
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            transform: rotate(90deg) scale(1.12);
+            box-shadow: 0 8px 24px rgba(245, 166, 35, .5);
+        }
+        /* ── 14. NAV MENU ──────────────────────────────────────── */
+        
+        #nav-menu {
+            list-style: none;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        #nav-menu li+li {
+            border-top: 1px solid var(--border);
+        }
+        
+        #nav-menu a {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--navy-light);
+            font-weight: 600;
+            font-size: .96rem;
+            border-left: 4px solid transparent;
+            transition: var(--transition);
+            gap: 10px;
+        }
+        
+        #nav-menu a::before {
+            content: '›';
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 900;
+            transition: transform var(--transition);
+            opacity: 0;
+            line-height: 1;
+        }
+        
+        #nav-menu a:hover {
+            background: linear-gradient(90deg, rgba(245, 166, 35, .1) 0%, rgba(245, 166, 35, .02) 100%);
+            color: var(--gold-dark);
+            border-left-color: var(--gold);
+            padding-left: 28px;
+        }
+        
+        #nav-menu a:hover::before {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+        /* ── 15. SEARCH MODAL ──────────────────────────────────── */
+        
+        #search-input {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 16px;
+            margin-top: 4px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-main);
+            background: var(--smoke);
+            transition: var(--transition);
+            outline: none;
+        }
+        
+        #search-input:focus {
+            border-color: var(--gold);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(245, 166, 35, .1), var(--shadow-sm);
+        }
+        
+        #search-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        #search-list {
+            list-style: none;
+            max-height: 230px;
+            overflow-y: auto;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        #search-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        #search-list::-webkit-scrollbar-thumb {
+            background: var(--gold-light);
+            border-radius: 3px;
+        }
+        
+        #search-list li {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: .92rem;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        #search-list li::before {
+            content: '▸';
+            color: var(--gold);
+            font-size: .8rem;
+            opacity: 0;
+            transition: opacity .2s;
+            flex-shrink: 0;
+        }
+        
+        #search-list li:hover {
+            background: linear-gradient(90deg, rgba(245, 166, 35, .09) 0%, transparent 80%);
+            color: var(--gold-dark);
+            font-weight: 600;
+            padding-left: 28px;
+        }
+        
+        #search-list li:hover::before {
+            opacity: 1;
+        }
+        
+        #search-list li:last-child {
+            border-bottom: none;
+        }
+        
+        #search-result {
+            text-align: center;
+            animation: fadeUp .35s ease both;
+        }
+        
+        #search-result .card {
+            margin: 0 auto;
+            max-width: 360px;
+            animation: cardIn .4s ease both;
+        }
+        /* ── 16. WHATSAPP CONTACTS ─────────────────────────────── */
+        
+        .contacts {
+            padding: 0;
+        }
+        
+        .contacts-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            margin-bottom: 14px;
+        }
+        
+        .contacts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .contact {
+            display: flex;
+            flex-direction: column;
+            padding: 14px 18px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1.5px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--whatsapp), var(--whatsapp-dk));
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform var(--transition);
+        }
+        
+        .contact:hover {
+            transform: translateX(6px);
+            border-color: rgba(37, 211, 102, .4);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, .14);
+            background: #f8fffc;
+        }
+        
+        .contact:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .contact--highlight {
+            background: linear-gradient(135deg, #fffbe6 0%, #fef3c3 100%);
+            border-color: rgba(229, 180, 68, .5);
+        }
+        
+        .contact--highlight::before {
+            background: linear-gradient(180deg, var(--gold), var(--amber));
+        }
+        
+        .contact--highlight:hover {
+            border-color: var(--gold);
+            box-shadow: 0 6px 18px rgba(245, 166, 35, .2);
+            background: #fff9e6;
+        }
+        
+        .contact-name {
+            font-weight: 700;
+            font-size: .93rem;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+        
+        .contact-role {
+            font-size: .78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .contact-arrow {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--whatsapp);
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .contact:hover .contact-arrow {
+            opacity: 1;
+            transform: translateY(-50%) translateX(3px);
+        }
+        
+        .contact-link {
+            display: block;
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--navy);
+            background: linear-gradient(135deg, rgba(37, 211, 102, .1), rgba(37, 211, 102, .05));
+            border: 2px solid rgba(37, 211, 102, .2);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .contact-link:hover {
+            background: var(--whatsapp);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, .3);
+        }
+        /* ── 17. ANIMATIONS ────────────────────────────────────── */
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(32px) scale(.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* ── 18. FOCUS ACCESSIBILITY ───────────────────────────── */
+        
+         :focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        /* ── 19. UTILITY ───────────────────────────────────────── */
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        /* ── 20. RESPONSIVE — TABLET (≤ 1024px) ───────────────── */
+        
+        @media (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+                gap: 20px;
+            }
+            section {
+                padding: 38px 30px;
+            }
+        }
+        /* ── 21. RESPONSIVE — MOBILE (≤ 768px) ────────────────── */
+        
+        @media (max-width: 768px) {
+             :root {
+                --header-h: 120px;
+            }
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+                padding: 14px 18px 12px;
+                gap: 10px;
+            }
+            .header-brand {
+                justify-content: center;
+            }
+            header h1 {
+                text-align: center;
+                font-size: 1.25rem;
+            }
+            .header-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            #menu-btn,
+            #search-btn,
+            .header-link {
+                padding: 9px 16px;
+                font-size: .8rem;
+            }
+            main {
+                padding: 30px 16px 64px;
+            }
+            section {
+                padding: 30px 22px;
+                margin-bottom: 36px;
+                border-radius: var(--radius-lg);
+            }
+            section h2 {
+                font-size: 1.25rem;
+            }
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 16px;
+            }
+            .modal-content {
+                padding: 40px 24px 30px;
+                max-height: 93vh;
+            }
+            #mission {
+                padding: 52px 24px;
+            }
+            .mission-stats {
+                gap: 28px;
+            }
+            .mission-stat strong {
+                font-size: 1.6rem;
+            }
+            footer {
+                padding: 44px 16px 32px;
+            }
+            .footer-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+        /* ── 22. RESPONSIVE — SMALL MOBILE (≤ 480px) ──────────── */
+        
+        @media (max-width: 480px) {
+             :root {
+                --header-h: 130px;
+            }
+            header {
+                padding: 12px 14px 10px;
+            }
+            header h1 {
+                font-size: 1.1rem;
+            }
+            .header-brand-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+            #menu-btn,
+            #search-btn,
+            .header-link {
+                font-size: .76rem;
+                padding: 8px 13px;
+            }
+            main {
+                padding: 22px 12px 52px;
+            }
+            section {
+                padding: 22px 16px;
+                margin-bottom: 26px;
+                border-radius: var(--radius-md);
+            }
+            section h2 {
+                font-size: 1.1rem;
+            }
+            section>p {
+                font-size: .88rem;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .card {
+                padding: 18px 16px 22px;
+            }
+            .card img {
+                height: 195px;
+            }
+            .card h3 {
+                font-size: .93rem;
+            }
+            .btn {
+                padding: 10px 13px;
+                font-size: .76rem;
+                min-width: 100px;
+            }
+            .modal-content {
+                width: 99vw;
+                padding: 44px 16px 24px;
+                border-radius: var(--radius-lg);
+            }
+            .modal-content h2 {
+                font-size: 1.2rem;
+            }
+            #search-input {
+                font-size: .9rem;
+                padding: 12px 14px;
+            }
+            #search-list li {
+                font-size: .86rem;
+                padding: 10px 14px;
+            }
+            #nav-menu a {
+                padding: 12px 14px;
+                font-size: .88rem;
+            }
+            #mission {
+                padding: 44px 16px;
+            }
+            .mission-stats {
+                gap: 20px;
+            }
+            .mission-stat strong {
+                font-size: 1.4rem;
+            }
+            .mission-stat span {
+                font-size: .72rem;
+            }
+            footer {
+                padding: 36px 12px 24px;
+            }
+            .footer-content h3 {
+                font-size: 1.15rem;
+            }
+            .footer-content p {
+                font-size: .85rem;
+            }
+            .contact {
+                padding: 12px 14px;
+            }
+            .contact-name {
+                font-size: .88rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- ═══ HEADER ═══ -->
     <header>
-        <h1>Pilote Construction SARL</h1>
+        <a class="header-brand" href="#">
+            <div class="header-brand-icon">🏗️</div>
+            <h1>
+                Pilote Construction SARL
+                <small>Carreaux &amp; Tôles de qualité</small>
+            </h1>
+        </a>
         <div class="header-buttons">
-            <button id="menu-btn">Menu</button>
-            <button id="search-btn">Recherche Avancée</button>
+            <button id="menu-btn">☰ Menu</button>
+            <button id="search-btn">🔍 Recherche</button>
             <a href="carreau_dispo_mag.html" class="header-link">Magasin</a>
             <a href="carreau_dispo_usi.html" class="header-link">Usine</a>
         </div>
     </header>
+
+    <!-- ═══ MAIN ═══ -->
     <main>
+
+        <!-- Mission -->
         <section id="mission">
-            <h2>Mission</h2>
+            <h2>Notre Mission</h2>
             <p>Pilote Construction SARL est une entreprise spécialisée dans les carreaux et tôles. Nous proposons une large gamme de produits de qualité pour vos projets de construction et rénovation.</p>
+            <div class="mission-stats">
+                <div class="mission-stat">
+                    <strong>13+</strong>
+                    <span>Catégories</span>
+                </div>
+                <div class="mission-stat">
+                    <strong>200+</strong>
+                    <span>Références</span>
+                </div>
+                <div class="mission-stat">
+                    <strong>2</strong>
+                    <span>Sites</span>
+                </div>
+            </div>
         </section>
+
+        <!-- Carreaux 20x20 -->
         <section id="carreaux-20x20">
             <h2>Carreaux 20x20</h2>
             <p>Découvrez notre sélection de carreaux 20x20, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-20x20"></div>
         </section>
+
+        <!-- Carreaux 20x30 -->
         <section id="carreaux-20x30">
             <h2>Carreaux 20x30</h2>
             <p>Découvrez notre sélection de carreaux 20x30, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-20x30"></div>
         </section>
+
+        <!-- Carreaux 20x40 -->
         <section id="carreaux-20x40">
             <h2>Carreaux 20x40</h2>
             <p>Découvrez notre sélection de carreaux 20x40, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-20x40"></div>
         </section>
+
+        <!-- Carreaux 25x40 -->
         <section id="carreaux-25x40">
             <h2>Carreaux 25x40</h2>
             <p>Découvrez notre sélection de carreaux 25x40, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-25x40"></div>
         </section>
+
+        <!-- Carreaux 30x30 -->
         <section id="carreaux-30x30">
             <h2>Carreaux 30x30</h2>
             <p>Découvrez notre sélection de carreaux 30x30, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-30x30"></div>
         </section>
+
+        <!-- Carreaux 30x60 -->
         <section id="carreaux-30x60">
             <h2>Carreaux 30x60</h2>
             <p>Découvrez notre sélection de carreaux 30x60, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-30x60"></div>
         </section>
+
+        <!-- Carreaux 40x40 -->
         <section id="carreaux-40x40">
             <h2>Carreaux 40x40</h2>
             <p>Découvrez notre sélection de carreaux 40x40, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-40x40"></div>
         </section>
+
+        <!-- Carreaux 50x50 -->
         <section id="carreaux-50x50">
             <h2>Carreaux 50x50</h2>
             <p>Découvrez notre sélection de carreaux 50x50, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-50x50"></div>
         </section>
+
+        <!-- Carreaux 60x60 -->
         <section id="carreaux-60x60">
             <h2>Carreaux 60x60</h2>
             <p>Découvrez notre sélection de carreaux 60x60, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-60x60"></div>
         </section>
+
+        <!-- Carreaux 60x120 -->
         <section id="carreaux-60x120">
             <h2>Carreaux 60x120</h2>
             <p>Découvrez notre sélection de carreaux 60x120, parfaits pour vos sols et murs.</p>
             <div class="cards-container" data-category="carreaux-60x120"></div>
         </section>
+
+        <!-- Tôle -->
         <section id="tole">
             <h2>Tôle</h2>
             <p>Découvrez notre gamme de tôles pour vos projets de construction.</p>
             <div class="cards-container" data-category="tole"></div>
         </section>
+
+        <!-- Accessoire -->
         <section id="accessoire">
             <h2>Accessoire</h2>
             <p>Accessoires essentiels pour l'installation de vos carreaux et tôles.</p>
             <div class="cards-container" data-category="accessoire"></div>
         </section>
+
+        <!-- Ciment Colle -->
         <section id="ciment-colle">
             <h2>Ciment Colle</h2>
             <p>Ciments et colles de qualité pour une fixation durable.</p>
             <div class="cards-container" data-category="ciment-colle"></div>
         </section>
+
     </main>
+
+    <!-- ═══ FOOTER ═══ -->
     <footer>
         <div class="footer-content">
+            <div class="footer-logo">🏗️</div>
             <h3>Pilote Construction SARL</h3>
             <p>Spécialiste en carreaux et tôles de qualité</p>
-            <p>📞 Pour toute demande: <strong>+237 670 078 114</strong></p>
+            <div class="footer-divider"></div>
+            <p>Pour toute demande : <strong>+237 670 078 114</strong></p>
             <p>&copy; 2024 Pilote Construction SARL. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Menu Modal -->
+    <!-- ═══ MODAL — MENU ═══ -->
     <div id="menu-modal" class="modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
@@ -111,16 +1412,16 @@
             <h2>Navigation</h2>
             <ul id="nav-menu">
                 <li><a href="#mission">Mission</a></li>
-                <li><a href="#carreaux-20x20">Carreaux 20x20</a></li>
-                <li><a href="#carreaux-20x30">Carreaux 20x30</a></li>
-                <li><a href="#carreaux-20x40">Carreaux 20x40</a></li>
-                <li><a href="#carreaux-25x40">Carreaux 25x40</a></li>
-                <li><a href="#carreaux-30x30">Carreaux 30x30</a></li>
-                <li><a href="#carreaux-30x60">Carreaux 30x60</a></li>
-                <li><a href="#carreaux-40x40">Carreaux 40x40</a></li>
-                <li><a href="#carreaux-50x50">Carreaux 50x50</a></li>
-                <li><a href="#carreaux-60x60">Carreaux 60x60</a></li>
-                <li><a href="#carreaux-60x120">Carreaux 60x120</a></li>
+                <li><a href="#carreaux-20x20">Carreaux 20×20</a></li>
+                <li><a href="#carreaux-20x30">Carreaux 20×30</a></li>
+                <li><a href="#carreaux-20x40">Carreaux 20×40</a></li>
+                <li><a href="#carreaux-25x40">Carreaux 25×40</a></li>
+                <li><a href="#carreaux-30x30">Carreaux 30×30</a></li>
+                <li><a href="#carreaux-30x60">Carreaux 30×60</a></li>
+                <li><a href="#carreaux-40x40">Carreaux 40×40</a></li>
+                <li><a href="#carreaux-50x50">Carreaux 50×50</a></li>
+                <li><a href="#carreaux-60x60">Carreaux 60×60</a></li>
+                <li><a href="#carreaux-60x120">Carreaux 60×120</a></li>
                 <li><a href="#tole">Tôle</a></li>
                 <li><a href="#accessoire">Accessoire</a></li>
                 <li><a href="#ciment-colle">Ciment Colle</a></li>
@@ -128,90 +1429,98 @@
         </div>
     </div>
 
-    <!-- Search Modal -->
+    <!-- ═══ MODAL — RECHERCHE ═══ -->
     <div id="search-modal" class="modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="modal-close" id="search-close">&times;</button>
             <h2>Recherche Avancée</h2>
-            <input type="text" id="search-input" placeholder="Rechercher un article">
+            <input type="text" id="search-input" placeholder="Rechercher un article...">
             <ul id="search-list"></ul>
             <div id="search-result"></div>
         </div>
     </div>
 
-    <!-- WhatsApp Modal -->
+    <!-- ═══ MODAL — WHATSAPP ═══ -->
     <div id="whatsapp-modal" class="modal">
         <div class="modal-overlay"></div>
-
         <div class="modal-content">
             <button class="modal-close" id="whatsapp-close">&times;</button>
-
             <h2>Choisissez un contact</h2>
-
             <div class="contacts">
-                <h2 class="contacts-title">Contacts WhatsApp</h2>
-
+                <p class="contacts-title">Contacts WhatsApp</p>
                 <div class="contacts-list">
 
                     <a href="#" class="contact contact--highlight" data-number="237680631763">
                         <span class="contact-name">Mr DJOUA ZIDANE</span>
                         <span class="contact-role">Président Directeur Général</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact contact--highlight" data-number="237673902656">
                         <span class="contact-name">Mr TCHIOFFO DIBORES</span>
                         <span class="contact-role">Directeur Général</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237653891677">
                         <span class="contact-name">Mr DJOUA JORES</span>
                         <span class="contact-role">Chef d'agence 4e étage</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237670078114">
                         <span class="contact-name">MATIP KEVIN</span>
                         <span class="contact-role">Développeur</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237691137367">
                         <span class="contact-name">TOSCANI JUNIOR</span>
                         <span class="contact-role">Assistant comptable</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237682938890">
                         <span class="contact-name">FARELLE DIAMS</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237682938962">
                         <span class="contact-name">LOIC JARDEL</span>
                         <span class="contact-role">Conseiller de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237686736345">
                         <span class="contact-name">FORTUNE</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237682938948">
                         <span class="contact-name">LINARESSE</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237682939429">
                         <span class="contact-name">MANUELLA</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237652063393">
                         <span class="contact-name">DESIRE</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                     <a href="#" class="contact" data-number="237682939236">
                         <span class="contact-name">STONE</span>
                         <span class="contact-role">Conseillère de vente</span>
+                        <span class="contact-arrow">➤</span>
                     </a>
 
                 </div>
