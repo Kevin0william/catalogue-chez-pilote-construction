@@ -559,133 +559,133 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'carreaux-30x30',
             name: 'FGP 33005',
             description: 'Carreau 30x30 FGP 33005',
-            image: 'FGP3005.jpg'
+            image: 'FGP33005.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33010',
             description: 'Carreau 30x30 FGP 33010',
-            image: 'FGP3010.jpg'
+            image: 'FGP33010.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33015',
             description: 'Carreau 30x30 FGP 33015',
-            image: 'FGP3015.jpg'
+            image: 'FGP33015.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33020',
             description: 'Carreau 30x30 FGP 33020',
-            image: 'FGP3020.jpg'
+            image: 'FGP33020.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33021',
             description: 'Carreau 30x30 FGP 33021',
-            image: 'FGP3021.jpg'
+            image: 'FGP33021.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33022',
             description: 'Carreau 30x30 FGP 33022',
-            image: 'FGP3022.jpg'
+            image: 'FGP33022.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33023',
             description: 'Carreau 30x30 FGP 33023',
-            image: 'FGP3023.jpg'
+            image: 'FGP33023.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33024',
             description: 'Carreau 30x30 FGP 33024',
-            image: 'FGP3024.jpg'
+            image: 'FGP33024.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33025',
             description: 'Carreau 30x30 FGP 33025',
-            image: 'FGP3025.jpg'
+            image: 'FGP33025.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33026',
             description: 'Carreau 30x30 FGP 33026',
-            image: 'FGP3026.jpg'
+            image: 'FGP33026.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33027',
             description: 'Carreau 30x30 FGP 33027',
-            image: 'FGP3027.jpg'
+            image: 'FGP33027.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33028',
             description: 'Carreau 30x30 FGP 33028',
-            image: 'FGP3028.jpg'
+            image: 'FGP33028.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33029',
             description: 'Carreau 30x30 FGP 33029',
-            image: 'FGP3029.jpg'
+            image: 'FGP33029.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33032',
             description: 'Carreau 30x30 FGP 33032',
-            image: 'FGP3032.jpg'
+            image: 'FGP33032.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33034',
             description: 'Carreau 30x30 FGP 33034',
-            image: 'FGP3034.jpg'
+            image: 'FGP33034.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33035',
             description: 'Carreau 30x30 FGP 33035',
-            image: 'FGP3035.jpg'
+            image: 'FGP33035.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33036',
             description: 'Carreau 30x30 FGP 33036',
-            image: 'FGP3036.jpg'
+            image: 'FGP33036.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33038',
             description: 'Carreau 30x30 FGP 33038',
-            image: 'FGP3038.jpg'
+            image: 'FGP33038.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33039',
             description: 'Carreau 30x30 FGP 33039',
-            image: 'FGP3039.jpg'
+            image: 'FGP33039.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33112',
             description: 'Carreau 30x30 FGP 33112',
-            image: 'FGP3112.jpg'
+            image: 'FGP33112.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33126',
             description: 'Carreau 30x30 FGP 33126',
-            image: 'FGP3126.jpg'
+            image: 'FGP33126.jpg'
         },
         {
             category: 'carreaux-30x30',
             name: 'FGP 33130',
             description: 'Carreau 30x30 FGP 33130',
-            image: 'FGP3130.jpg'
+            image: 'FGP33130.jpg'
         },
         /* ==================== CARREAUX 30x30 NM ==================== */
         {
@@ -741,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'carreaux-30x30',
             name: 'NM 33233',
-            description: 'Carreau 30x30 NM 33281',
+            description: 'Carreau 30x30 NM 33233',
             image: 'NM33233.jpeg'
         },
         {
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'carreaux-30x30',
             name: 'NMC 33285',
-            description: 'Carreau 30x30 NMC 33225',
+            description: 'Carreau 30x30 NMC 33285',
 
             image: 'NMC33285.jpeg'
         },
@@ -1505,12 +1505,12 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Carreau 60x60 PGS 66222',
             image: 'PGS66222.jpeg',
         },
-        {
-            category: 'carreaux-60x60',
-            name: 'Carreau PGS 66267 ',
-            description: 'Carreau 60x60 PGS 66267',
-            image: 'PGS66267.jpeg',
-        },
+        // {
+        //     category: 'carreaux-60x60',
+        //     name: 'Carreau PGS 66267 ',
+        //     description: 'Carreau 60x60 PGS 66267',
+        //     image: 'PGS66267.jpeg',
+        // },
         {
             category: 'carreaux-60x60',
             name: 'Carreau PGS 66281 ',
@@ -1554,7 +1554,55 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'carreaux-60x120',
             name: 'Carreau YMP 612001',
             description: 'Carreau 60X120 YMP 612001',
-            image: 'YMP612001'
+            image: 'YMP612001.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612002',
+            description: 'Carreau 60X120 YMP 612002',
+            image: 'YMP612002.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612003',
+            description: 'Carreau 60X120 YMP 612003',
+            image: 'YMP612003.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612004',
+            description: 'Carreau 60X120 YMP 612004',
+            image: 'YMP612004.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612005',
+            description: 'Carreau 60X120 YMP 612005',
+            image: 'YMP612005.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612008',
+            description: 'Carreau 60X120 YMP 612008',
+            image: 'YMP612008.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612009',
+            description: 'Carreau 60X120 YMP 612009',
+            image: 'YMP612009.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612012',
+            description: 'Carreau 60X120 YMP 612012',
+            image: 'YMP612012.jpeg',
+        },
+        {
+            category: 'carreaux-60x120',
+            name: 'Carreau YMP 612014',
+            description: 'Carreau 60X120 YMP 612014',
+            image: 'YMP612014.jpeg',
         },
         // Tôle
         {
@@ -1565,35 +1613,35 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'tole',
-            name: 'Tôle Acier',
-            description: 'Tôle bac disponible en nature et laquee',
+            name: 'Tôle bac',
+            description: 'Tôle bac disponible en nature et laqué ',
             image: 'tolebac.jpeg'
         },
         // Accessoire
         {
             category: 'accessoire',
-            name: 'Joint Silicone',
-            description: 'Joint silicone pour étanchéité.',
-            image: ''
+            name: 'Naissance gouttière',
+            description: 'Naissance gouttière pour tôle bac.',
+            image: 'naissancegouttiere.jpeg'
         },
         {
             category: 'accessoire',
-            name: 'Croix Espacement',
-            description: 'Croix pour espacement des carreaux.',
-            image: ''
+            name: 'Gouttière',
+            description: 'Gouttière pour tôle bac.',
+            image: 'goutiere.jpeg'
         },
         // Ciment Colle
         {
             category: 'ciment-colle',
-            name: 'Ciment Colle Blanc',
+            name: 'Ciment colle multiflex',
             description: 'Ciment colle blanc pour carreaux.',
-            image: ''
+            image: 'multiflexe.jpeg'
         },
         {
             category: 'ciment-colle',
-            name: 'Colle Époxy',
-            description: 'Colle époxy résistante.',
-            image: ''
+            name: 'Ciment colle flexicol',
+            description: 'Ciment colle gris pour carreaux.',
+            image: 'flexicol.jpeg'
         },
     ];
 
