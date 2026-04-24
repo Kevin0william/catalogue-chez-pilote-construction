@@ -976,19 +976,18 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         /* ===== NM ===== */
         {
-            id: "NM 44001",
-            category: "carreaux-30x30",
+            category: "carreaux-40x40",
+            name: "NM 44001",
+            description: "Carreau 40x40 NM 44001",
             image: "NM44001.jpg",
-            stock: 410,
-            disponible: true
         },
         /* ===== NMC ===== */
         {
-            id: "NMC 44005",
-            category: "carreaux-30x30",
+
+            category: "carreaux-40x40",
+            name: "NMC 44005",
+            description: "Carreau 40x40 NMC 44005",
             image: "nmc44005.jpg",
-            stock: 282,
-            disponible: true
         },
         //===========40X40 YMG===================
         {
