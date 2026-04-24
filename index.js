@@ -974,6 +974,22 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Carreau 40x40 FGP 44179',
             image: 'FGP44179.jpeg'
         },
+        /* ===== NM ===== */
+        {
+            id: "NM 44001",
+            category: "carreaux-30x30",
+            image: "NM44001.jpg",
+            stock: 410,
+            disponible: true
+        },
+        /* ===== NMC ===== */
+        {
+            id: "NMC 44005",
+            category: "carreaux-30x30",
+            image: "nmc44005.jpg",
+            stock: 282,
+            disponible: true
+        },
         //===========40X40 YMG===================
         {
             category: 'carreaux-40x40',
