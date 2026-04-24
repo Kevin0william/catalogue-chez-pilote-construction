@@ -979,7 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "carreaux-40x40",
             name: "NM 44001",
             description: "Carreau 40x40 NM 44001",
-            image: "NM44001.jpg",
+            image: "NM44001.jpeg",
         },
         /* ===== NMC ===== */
         {
@@ -987,7 +987,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "carreaux-40x40",
             name: "NMC 44005",
             description: "Carreau 40x40 NMC 44005",
-            image: "nmc44005.jpg",
+            image: "nmc44005.jpeg",
         },
         //===========40X40 YMG===================
         {
